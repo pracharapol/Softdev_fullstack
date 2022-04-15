@@ -1,0 +1,259 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Lucida Handwriting;
+}
+* a{
+    text-decoration: none;
+}
+* li{
+    list-style: none;
+}
+.containersi{
+    position: relative;
+    min-height: 100vh;
+    text-align: center;
+}
+.loginpi{
+    top: 20px;
+    margin: 20px 20px;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 50px;
+    border-radius: 50px;
+    background-image: url("rulebg3.webp");
+    text-align: center;
+    background-size: cover;
+    
+    background-position: center;
+    
+    
+}
+.containi .tx{
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    border: 2px solid rgb(0, 0, 0);
+    text-align: center;
+    
+}
+.loginpi .txs{
+   
+    
+    font-size: 15px;
+    color: rgb(255, 0, 0);
+    text-align: center;
+    text-shadow:0.1em 0.1em rgb(0, 0, 0) ;
+    font-weight: bold;
+}
+.loginpi .txs:hover{
+    color: rgb(19, 21, 122);
+}
+.containi {
+    margin: auto auto;
+    top: 30px;
+    width: 60%;
+    /* background-color: aquamarine; */
+    padding: 50px;
+    background-size: cover;
+    text-align: center;
+    position: relative;
+    
+    background-image: url("rulebg.webp");
+    border-radius: 50px;
+    text-shadow:0.1em 0.1em rgb(3, 25, 28) ;
+    border: 2px solid rgb(255, 255, 255);
+    
+}
+.button-savei{
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    text-shadow:0.1em 0.1em rgb(255, 255, 255) ;
+    position: relative;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    letter-spacing: 1px;
+    padding: 1px 5px;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    
+}
+.button-savei:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+.bgi{
+    width: 100%;
+    height: 120%;
+    position: relative;
+
+}
+.bgi::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 140%;
+    background-image: url("rulebg3.webp");
+    z-index: -2;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(80%);
+    background-attachment: fixed;
+}
+
+
+.menui{
+    position: relative;
+    width: 95%;
+    height: 10vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url("giphy.gif");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    border: 5px #fff;
+    border-radius: 25px;
+    border: 2px solid rgb(255, 255, 255);
+}
+.logoi {
+    font-size: 4rem;
+    color: #fff;
+    animation: logoi infinite 15s linear;
+}
+
+.menui ul{
+    display: flex;
+    transition: 0.4s;
+    grid-gap: 10px;
+    width: 20%;
+   
+}
+.menui ul li{
+    padding: 0 50px;
+    transition: 0.4s;
+    
+}
+.menui ul li a{
+    font-weight: bold;
+    color: #fff;
+    font-size: 20px;
+    
+}
+/*contain*/
+.containi .headeri{
+    transition: 0.5s;
+    animation: headeri infinite 1s linear;
+    animation-direction: alternate;
+}
+.containi .headeri h3{
+    font-size: 40px;
+    color: #fff;
+    text-shadow:0.1em 0.1em rgb(3, 25, 28) ;
+    position: relative;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    cursor: default;
+}
+.containi .headeri h1{
+    font-size: 40px;
+    color: #fff;
+    text-shadow:0.1em 0.1em rgb(3, 25, 28) ;
+    position: relative;
+    letter-spacing: 1px;
+    cursor: default;
+}
+
+.containi .headeri{
+    width: 100%;
+    opacity: 1;
+    
+}
+
+.containi .box, .h2{
+    font-size: 40px;
+    text-shadow:0.05em 0.05em rgb(6, 33, 30) ;
+}
+.containi .headeri:hover{
+    transform: translateY(-15px);
+    
+}
+.containi .box:hover{
+    transform: translateY(-15px);
+}
+.menui .box-bgi1:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+.menui .box-bgi2:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+.menui .box-bgi3:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+.menui .box-bgi4:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+.box-bgi1{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+}
+.box-bgi2{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+}
+.box-bgi3{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+}
+.box-bgi4{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+}
+@keyframes logoi {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+ @keyframes headeri {
+    from {
+      transform: translateY(-10px);
+    }
+    to {
+      transform: translateY(10px);
+      
+    }
+  }
+  

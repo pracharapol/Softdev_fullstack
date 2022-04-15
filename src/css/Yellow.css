@@ -1,0 +1,291 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Lucida Handwriting;
+}
+* a{
+    text-decoration: none;
+}
+* li{
+    list-style: none;
+}
+.containery{
+    position: relative;
+    min-height: 100vh;
+}
+.bgy{
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+}
+.bgy::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 180%;
+    background-image: url("giphy3.gif");
+    z-index: -2;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(80%);
+    background-attachment: fixed;
+}
+
+
+.menuy{
+    position: relative;
+    width: 95%;
+    height: 10vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url("giphy.gif");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    border: 5px #fff;
+    border-radius: 25px;
+    border: 2px solid rgb(0, 0, 0);
+}
+.logoy {
+    font-size: 4rem;
+    color: #fff;
+    animation: logoy infinite 15s linear;
+}
+
+.menuy ul{
+    display: flex;
+    transition: 0.4s;
+    grid-gap: 10px;
+    
+   
+}
+.menuy ul li{
+    padding: 0 50px;
+    transition: 0.4s;
+}
+.menuy ul li a{
+    font-weight: bold;
+    color: #fff;
+    font-size: 20px;
+    
+}
+/*contain*/
+.containy .headery{
+    transition: 0.5s;
+    animation: headery infinite 1s linear;
+    animation-direction: alternate;
+}
+.containy .headery h3{
+    font-size: 40px;
+    color: #fff;
+    text-shadow:0.1em 0.1em rgb(3, 25, 28) ;
+    position: relative;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    text-align: center;
+    cursor: default;
+}
+.containy .headery h1{
+    font-size: 40px;
+    color: #fff;
+    text-shadow:0.1em 0.1em rgb(3, 25, 28) ;
+    position: relative;
+    letter-spacing: 1px;
+    text-align: center;
+    cursor: default;
+}
+
+.containy .headery{
+    width: 100%;
+    opacity: 1;
+    
+}
+
+
+
+
+.containy .boxy, .h2{
+    font-size: 40px;
+    text-shadow:0.05em 0.05em rgb(6, 33, 30) ;
+    
+}
+.containy .headery:hover{
+    transform: translateY(-15px);
+    
+}
+.containy .boxy:hover{
+    transform: translateY(-15px);
+}
+.menuy .box-bgy1:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+.menuy .box-bgy2:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+.menuy .box-bgy3:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+.menuy .box-bgy4:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+.box-bgy1{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+}
+.box-bgy2{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+}
+.box-bgy3{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+}
+.box-bgy4{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+@keyframes logoy {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+ 
+
+ @keyframes headery {
+    from {
+      transform: translateY(-10px);
+    }
+    to {
+      transform: translateY(10px);
+      
+    }
+  }
+ 
+  .showy .liy1{
+    background-image: url("liy1.jpg");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgb(255, 255, 255);
+    color: #fff;
+    
+   
+
+    font-weight: bold;
+    text-align: center;
+    width: 450px;
+    height: 40vh;
+}
+.showy .liy2{
+    background-image: url("liy2.jpg");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgb(255, 255, 255);
+    color: #fff;
+    
+    
+    font-weight: bold;
+    text-align: center;
+    width: 450px;
+    height: 40vh;
+}
+.showy .liy3{
+    background-image: url("liy3.jpg");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgb(255, 255, 255);
+    color: #fff;
+    
+    
+    font-weight: bold;
+    text-align: center;
+    width: 450px;
+    height: 40vh;
+}
+.showy .liy4{
+    background-image: url("liy4.jpg");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgb(255, 255, 255);
+    color: #fff;
+   
+    
+    font-weight: bold;
+    text-align: center;
+    width: 450px;
+    height: 40vh;
+}
+.showy .liy5{
+    background-image: url("liy5.jpg");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgb(255, 255, 255);
+    color: #fff;
+   
+    
+    font-weight: bold;
+    text-align: center;
+    width: 450px;
+    height: 40vh;
+}
+.showy li{
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    text-shadow: 0.05em 0.05em rgb(6, 33, 30);
+}
+.showy li h1{
+    font-size: 20px;
+}
+.showy{
+    text-align: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 30px ;
+    column-gap: 150px;
+    margin-left: 15%;
+    margin-top: 4%;
+    position:absolute;
+    background-attachment: fixed;
+    
+    
+}

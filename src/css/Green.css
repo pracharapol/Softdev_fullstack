@@ -1,0 +1,295 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Lucida Handwriting;
+}
+* a{
+    text-decoration: none;
+}
+* li{
+    list-style: none;
+}
+.containerq{
+    position: relative;
+    min-height: 100vh;
+}
+.bgq{
+    width: 100%;
+    height:180%;
+    position: relative;
+
+}
+.bgq::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 180%;
+    background-image: url("giphy3.gif");
+    z-index: -2;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(80%);
+    background-attachment: fixed;
+}
+
+
+.menuq{
+    position: relative;
+    width: 95%;
+    height: 10vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url("giphy.gif");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    border: 5px #fff;
+    border-radius: 25px;
+    border: 2px solid rgb(0, 0, 0);
+}
+.logoq {
+    font-size: 4rem;
+    color: #fff;
+    animation: logoq infinite 15s linear;
+}
+
+.menuq ul{
+    display: flex;
+    transition: 0.4s;
+    grid-gap: 10px;
+    
+   
+}
+.menuq ul li{
+    padding: 0 50px;
+    transition: 0.4s;
+}
+.menuq ul li a{
+    font-weight: bold;
+    color: #fff;
+    font-size: 20px;
+    
+}
+/*contain*/
+.containq .headerq{
+    transition: 0.5s;
+    animation: headerq infinite 1s linear;
+    animation-direction: alternate;
+}
+.containq .headerq h3{
+    font-size: 40px;
+    color: #fff;
+    text-shadow:0.1em 0.1em rgb(3, 25, 28) ;
+    position: relative;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    text-align: center;
+    cursor: default;
+}
+.containq .headerq h1{
+    font-size: 40px;
+    color: #fff;
+    text-shadow:0.1em 0.1em rgb(3, 25, 28) ;
+    position: relative;
+    letter-spacing: 1px;
+    text-align: center;
+    cursor: default;
+}
+
+.containq .headerq{
+    width: 100%;
+    opacity: 1;
+    
+}
+
+
+
+
+.containq .boxq, .h2{
+    font-size: 40px;
+    text-shadow:0.05em 0.05em rgb(6, 33, 30) ;
+    
+}
+.containq .headerq:hover{
+    transform: translateY(-15px);
+    
+}
+.containq .boxq:hover{
+    transform: translateY(-15px);
+}
+.menuq .box-bgq1:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+.menuq .box-bgq2:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+.menuq .box-bgq3:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+.menuq .box-bgq4:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+.box-bgq1{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+}
+.box-bgq2{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+}
+.box-bgq3{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+}
+.box-bgq4{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.show .li1{
+    background-image: url("li1.jpg");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgb(255, 255, 255);
+    color: #fff;
+    
+   
+
+    font-weight: bold;
+    text-align: center;
+    width: 450px;
+    height: 40vh;
+}
+.show .li2{
+    background-image: url("li2.jpg");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgb(255, 255, 255);
+    color: #fff;
+    
+    
+    font-weight: bold;
+    text-align: center;
+    width: 450px;
+    height: 40vh;
+}
+.show .li3{
+    background-image: url("li3.jpg");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgb(255, 255, 255);
+    color: #fff;
+    
+    
+    font-weight: bold;
+    text-align: center;
+    width: 450px;
+    height: 40vh;
+}
+.show .li4{
+    background-image: url("li4.jpg");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgb(255, 255, 255);
+    color: #fff;
+   
+    
+    font-weight: bold;
+    text-align: center;
+    width: 450px;
+    height: 40vh;
+}
+.show .li5{
+    background-image: url("li5.jpg");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgb(255, 255, 255);
+    color: #fff;
+   
+    
+    font-weight: bold;
+    text-align: center;
+    width: 450px;
+    height: 40vh;
+}
+.show li{
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    text-shadow: 0.05em 0.05em rgb(6, 33, 30);
+}
+.show li h1{
+    font-size: 20px;
+}
+.show{
+    text-align: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 30px ;
+    column-gap: 150px;
+    margin-left: 15%;
+    margin-top: 4%;
+    position:absolute;
+    background-attachment: fixed;
+    
+    
+}
+
+
+
+
+@keyframes logoq {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+ 
+
+ @keyframes headerq {
+    from {
+      transform: translateY(-10px);
+    }
+    to {
+      transform: translateY(10px);
+      
+    }
+  }
+ 

@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Lucida Handwriting;
+}
+
+* a {
+    text-decoration: none;
+}
+
+* li {
+    list-style: none;
+}
+
+.containerl {
+    position: relative;
+    min-height: 100vh;
+}
+
+.bgl {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+}
+
+.bgl::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background-image: url("giphy10.gif");
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(50%);
+    background-attachment: fixed;
+}
+
+.menul {
+    position: relative;
+    width: 95%;
+    height: 10vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url("giphy.gif");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    border: 5px #fff;
+    border-radius: 25px;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.logol {
+    font-size: 4rem;
+    color: #fff;
+    animation: logol infinite 15s linear;
+}
+
+.menul ul {
+    display: flex;
+    transition: 0.4s;
+    grid-gap: 10px;
+
+
+}
+
+.menul ul li {
+    padding: 0 50px;
+    transition: 0.4s;
+}
+
+.menul ul li a {
+    font-weight: bold;
+    color: #fff;
+    font-size: 20px;
+}
+
+.box-bgl1 {
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+    transition: 0.4s;
+}
+
+.box-bgl2 {
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+    transition: 0.4s;
+}
+
+.box-bgl3 {
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+
+    transition: 0.4s;
+}
+
+.box-bgl4 {
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+    transition: 0.4s;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.containl .headerl h3 {
+    font-size: 40px;
+    color: #fff;
+    text-shadow: 0.1em 0.1em rgb(3, 25, 28);
+    position: relative;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    text-align: center;
+    cursor: default;
+}
+
+.containl .headerl h1 {
+    font-size: 40px;
+    color: #fff;
+    text-shadow: 0.1em 0.1em rgb(3, 25, 28);
+    position: relative;
+    letter-spacing: 1px;
+    text-align: center;
+    cursor: default;
+
+}
+
+.containl .headerl {
+
+    animation: headerl infinite 2s linear;
+    animation-direction: alternate;
+    
+}
+
+@keyframes logol {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.menul .box-bgl1:hover {
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+
+.menul .box-bgl2:hover {
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+
+.menul .box-bgl3:hover {
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+
+.menul .box-bgl4:hover {
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+
+@keyframes headerl {
+    from {
+        transform: translateY(-10px);
+    }
+
+    to {
+        transform: translateY(10px);
+
+    }
+}
+
+.containl .bodyl {
+    margin: auto;
+    top: 50px;
+    width: 50%;
+
+    background-size: cover;
+    text-align: center;
+    position: relative;
+    background-attachment: fixed;
+    background-image: url("rulebg.webp");
+    border-radius: 50px;
+    border: 2px solid rgb(255, 255, 255);
+    background-size: cover;
+    background-position: center;
+    color: rgba(240, 245, 245, 1);
+    
+    transition: 0s;
+    animation: bodyl infinite 2s linear;
+    animation-direction: alternate;
+}
+
+.containl .bodyl-rule {
+    background-size: cover;
+    background-position: center;
+    padding: 35px;
+
+
+}
+
+.containl .bodyl-rule h2 {
+    color: rgb(255, 255, 255);
+    text-shadow: 0.1em 0.1em rgb(0, 0, 0);
+    cursor: default;
+}
+
+@keyframes bodyl {
+    from {
+        transform: translateY(-10px);
+    }
+
+    to {
+        transform: translateY(10px);
+
+    }
+}

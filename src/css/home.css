@@ -1,0 +1,356 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Lucida Handwriting;
+}
+* a{
+    text-decoration: none;
+}
+* li{
+    list-style: none;
+    
+}
+.containerh{
+    position: relative;
+    min-height: 100vh;
+}
+.bgh{
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+}
+.bgh::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("giphy3.gif");
+    z-index: -2;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(80%);
+    background-attachment: fixed;
+}
+
+
+.menuh{
+    position: relative;
+    width: 95%;
+    height: 10vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url("giphy.gif");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    border: 5px #fff;
+    border-radius: 25px;
+    border: 2px solid rgb(0, 0, 0);
+}
+.logoh {
+    font-size: 4rem;
+    color: #fff;
+    animation: logoh infinite 15s linear;
+}
+
+.menuh ul{
+    display: flex;
+    transition: 0.4s;
+    grid-gap: 10px;
+    
+   
+}
+.menuh ul li{
+    padding: 0 50px;
+    transition: 0.4s;
+}
+.menuh ul li a{
+    font-weight: bold;
+    color: #fff;
+    font-size: 20px;
+    
+}
+/*contain*/
+.containh .headerh{
+    transition: 0.5s;
+    animation: headerh infinite 1s linear;
+    animation-direction: alternate;
+}
+.containh .headerh h3{
+    font-size: 40px;
+    color: #fff;
+    text-shadow:0.1em 0.1em rgb(3, 25, 28) ;
+    position: relative;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    text-align: center;
+    cursor: default;
+}
+.containh .headerh h1{
+    font-size: 40px;
+    color: #fff;
+    text-shadow:0.1em 0.1em rgb(3, 25, 28) ;
+    position: relative;
+    letter-spacing: 1px;
+    
+}
+
+.containh .headerh{
+    width: 100%;
+    opacity: 1;
+    
+}
+
+
+.containh .box, .h2{
+    font-size: 40px;
+    text-shadow:0.05em 0.05em rgb(6, 33, 30) ;
+}
+.containh .headerh:hover{
+    transform: translateY(-15px);
+    
+}
+.containh .boxh:hover{
+    transform: translateY(-15px);
+}
+/* .menuh .box-bgh1:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+} */
+.menuh .box-bgh2:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+.menuh .box-bgh3:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+}
+.menuh .box-bgh4:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+    
+}
+.box-bgh1{
+    
+    text-shadow:0.05em 0.05em rgb(255, 255, 255) ;
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    letter-spacing: 0.5px;
+    position:absolute;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium';
+    left: 8%;
+    cursor: default;
+    
+}
+.box-bgh2{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+}
+.box-bgh3{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+    
+}
+.box-bgh4{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    
+}
+@keyframes logoh {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  table, th, td {
+    border: 5px solid black;
+    position: relative;
+    transition: 0.4s;
+    
+ }
+ 
+ @keyframes headerh {
+    from {
+      transform: translateY(-10px);
+    }
+    to {
+      transform: translateY(10px);
+      
+    }
+  }
+
+.bog1{
+    position: relative;
+    width: 400px;
+    height: 30vh;;
+    
+    align-items: center;
+    background-image: url("li3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    border: 5px #fff;
+    border-radius: 25px;
+    border: 2px solid rgb(255, 255, 255);
+    color: rgb(55, 255, 0);
+    font-size: 35px;
+    padding-top: 173px;
+    cursor: pointer;
+    text-shadow:0.05em 0.05em rgb(0, 0, 0) ;
+    font-weight: bold;
+    
+}
+.bog2{
+    position: relative;
+    width: 400px;
+    height: 30vh;
+    
+    align-items: center;
+    background-image: url("liy2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    border: 5px #fff;
+    border-radius: 25px;
+    border: 2px solid rgb(255, 255, 255);
+    color: rgb(251, 255, 0);
+    font-size: 35px;
+    padding-top: 173px;
+    cursor: pointer;
+    text-shadow:0.05em 0.05em rgb(0, 0, 0) ;
+    font-weight: bold;
+}
+.bog3{
+    position: relative;
+    width: 400px;
+    height: 30vh;
+    
+    align-items: center;
+    background-image: url("lir5.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    border: 5px #fff;
+    border-radius: 25px;
+    border: 2px solid rgb(255, 255, 255);
+    color: rgb(255, 0, 0);
+    font-size: 35px;
+    padding-top: 173px;
+    cursor: pointer;
+    text-shadow:0.05em 0.05em rgb(0, 0, 0) ;
+    font-weight: bold;
+    
+}
+.bog4{
+    position: relative;
+    width: 400px;
+    height: 30vh;
+   
+    align-items: center;
+    background-image: url("giphy3.gif");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    border: 5px #fff;
+    border-radius: 25px;
+    border: 2px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+    padding-top: 173px;
+    cursor: pointer;
+    text-shadow:0.05em 0.05em rgb(0, 0, 0) ;
+    font-weight: bold;
+    filter: brightness(80%);
+    
+}
+.cardd li{
+    
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 25px;
+    
+}
+
+.cardd{
+    margin-top: 60px;
+    font-size: 40px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 30px ;
+    column-gap: 10px;
+    margin-left: 15%;
+    margin-top: 4%;
+    text-shadow:0.05em 0.05em rgb(255, 255, 255) ;
+    font-weight: bold;
+    filter: brightness(80%);
+
+
+    transition: 0.5s;
+    animation: cardd infinite 1s linear;
+    animation-direction: alternate;
+    
+}
+@keyframes cardd {
+    from {
+      transform: translateY(-10px);
+    }
+    to {
+      transform: translateY(10px);
+      
+    }
+  }
+  .bog1:hover{
+      transform:translateY(-15px);
+      transition: 0.5s;
+  }
+  .bog2:hover{
+    transform:translateY(-15px);
+    transition: 0.5s;
+} .bog3:hover{
+    transform:translateY(-15px);
+    transition: 0.5s;
+} .bog4:hover{
+    transform:translateY(-15px);
+    transition: 0.5s;
+    
+}
+.pa{
+    font-size: 15px;
+    color: rgb(255, 0, 0);
+    text-shadow:0.05em 0.05em rgb(0, 0, 0) ;
+    font-family:'Franklin Gothic Medium' ;
+}
+.pa:hover{
+    color: blue;
+}
