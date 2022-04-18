@@ -13,6 +13,8 @@ import Green from './Green';
 import Yellow from './Yellow';
 import Red from './Red';
 import Pass from './password';
+import Qr from './Greenqr';
+import Random from './random';
 ReactDOM.render(
   <BrowserRouter>
   <Routes>
@@ -26,6 +28,8 @@ ReactDOM.render(
       <Route path="/yellow" element={<Yellow />} />
       <Route path="/red" element={<Red />} />
       <Route path="/password" element={<Pass />} />
+      <Route path="/Qr" element={<Qr />} />
+      <Route path="/random" element={<Random />} />
     </Routes>
 </BrowserRouter>,
   document.getElementById('root')

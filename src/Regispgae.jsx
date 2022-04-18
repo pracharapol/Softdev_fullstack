@@ -37,7 +37,7 @@ export default function SignUpSide() {
 
         }
         if (base < 2) {
-            alert('Please enter your name using 1 -20 lowercase letters.')
+            alert('Please enter your name in lowercase. and letters from 1 to 20 characters.')
             return false;
         }
 

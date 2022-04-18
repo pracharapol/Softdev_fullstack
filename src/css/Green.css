@@ -269,8 +269,23 @@
     
     
 }
-
-
+.li1:hover{
+    transform: translateY(-15px);
+    transition: 0.5s;
+}
+.li2:hover{
+    transform: translateY(-15px);
+    transition: 0.5s;
+}.li3:hover{
+    transform: translateY(-15px);
+    transition: 0.5s;
+}.li4:hover{
+    transform: translateY(-15px);
+    transition: 0.5s;
+}.li5:hover{
+    transform: translateY(-15px);
+    transition: 0.5s;
+}
 
 
 @keyframes logoq {

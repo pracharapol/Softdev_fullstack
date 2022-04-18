@@ -73,58 +73,42 @@ export default function Green() {
                 </div>
                 
             </div>
-            <div className="showy">
-                <div className="liy1">
-                    <li>
-                    Story Garden <br /> <h1>ซอย ประดิษฐ์มนูธรรม เขตลาดพร้าว กทม.</h1>
-                    </li>
-                </div>
-                <div className="liy2">
-                    <li>
-                    Begin Again Cafe <br /> <h1>ถนนพระราม 9 ซอย 49 สวนหลวง กทม</h1>
-                    </li>
-                </div>
-                <div className="liy3">
-                    <li>
-                    Emmies Cafe <br /> <h1>ถนน พระราม 9 ตัดใหม่ สวนหลวง กทม.</h1>
-                    </li>
-                </div>
-                <div className="liy4">
-                    <li>
-                    ChowCher Cof<br /> <h1>ChowCher Cof ซอย ลาดพร้าว 16</h1>
-                    </li>
-                </div>
-                <div className="liy5">
-                    <li>
-                    Sam-Rub Cafe and Cuisine<br /> <h1>Sam-Rub Cafe and Cuisine ลาดพร้าว 8 แยก 9 แขวง จอมพล</h1>
-                    </li>
-                </div>
-            </div><div className="showr">
+            <div className="showr">
+                <a href="https://www.google.co.th/maps/place/filsandfille/@13.7786737,100.6045677,17z/data=!3m1!4b1!4m5!3m4!1s0x30e29de3c67556bb:0xb2c17c49980b3fa9!8m2!3d13.7786737!4d100.6067564?hl=th">
                 <div className="lir1">
                     <li>
                     Filsandfile<br /> <h1>ซอยลาดพร้าว 84 หรือจะเข้าทาง ประดิษฐ์มนูญธรรม 3</h1>
                     </li>
                 </div>
+                </a>
+                <a href="https://www.google.co.th/maps/place/Kraft+Kafe/@13.8102365,100.5919219,14z/data=!4m9!1m2!2m1!1sKraft+Kafe!3m5!1s0x30e29dce13056d45:0xfdee448698e8eb9e!8m2!3d13.8102365!4d100.6094314!15sCgpLcmFmdCBLYWZlWgwiCmtyYWZ0IGthZmWSAQRjYWZl?hl=th">
                 <div className="lir2">
                     <li>
                     Kraft Kafe <br /> <h1>นาคนิวาส 30 ซอย ลาดพร้าว 71 เขต ลาดพร้าว กรุงเทพมหานคร 10230</h1>
                     </li>
                 </div>
+                </a>
+                <a href="https://www.google.co.th/maps/place/%E0%B8%A3%E0%B8%B4+Cafe/@13.8142922,100.5525658,13z/data=!4m9!1m2!2m1!1z4Lij4Li0IOC4hOC4suC5gOC4nw!3m5!1s0x30e29d45e1cff9d7:0x1efef224ab8b8e92!8m2!3d13.8032439!4d100.5707951!15sChPguKPguLQg4LiE4Liy4LmA4LifWhUiE-C4o-C4tCDguITguLLguYDguJ-SAQpyZXN0YXVyYW50?hl=th">
                 <div className="lir3">
                     <li>
                     ริ คาเฟ<br /> <h1>16/78 ลาดพร้าว18 แยก3 ถ.ลาดพร้าว ซอย ลาดพร้าว 15 แขวงจอมพล เขตจตุจักร กรุงเทพมหานคร 10900</h1>
                     </li>
                 </div>
+                </a>
+                <a href="https://www.google.co.th/maps/place/Tumorrow+Cafe/@13.7481539,100.6148199,17z/data=!3m1!4b1!4m5!3m4!1s0x30e29fa840127c85:0x5045931fe3bd77ff!8m2!3d13.7481552!4d100.6169994?hl=th">
                 <div className="lir4">
                     <li>
                     Tumorrow Café<br /> <h1>25/3 ซ.รามคำแหง24แยก2 ถนน หัวหมาก เขต บางกะปิ กรุงเทพมหานคร 10240</h1>
                     </li>
                 </div>
+                </a>
+                <a href="https://www.google.co.th/maps/place/Organic+Supply/@13.7998433,100.6046879,17z/data=!3m1!4b1!4m5!3m4!1s0x30e29ded351cba67:0xa9edec98d96d75b0!8m2!3d13.7998445!4d100.6068435?hl=th">
                 <div className="lir5">
                     <li>
                     Organic Supply<br /> <h1>Organic Supply โซนลาดพร้าว 71</h1>
                     </li>
                 </div>
+                </a>
             </div>
 
         </div>

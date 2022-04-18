@@ -141,6 +141,12 @@
     position: relative;
     
 }
+.menuh .box-bgh5:hover{
+    transform: translateY(-5px);
+    transition: 0.4s;
+    position: relative;
+    
+}
 .box-bgh1{
     
     text-shadow:0.05em 0.05em rgb(255, 255, 255) ;
@@ -150,7 +156,7 @@
     position:absolute;
     font-weight: bold;
     font-family: 'Franklin Gothic Medium';
-    left: 8%;
+    left: 7%;
     cursor: default;
     
 }
@@ -181,6 +187,15 @@
     cursor: pointer;
     
 }
+
+.box-bgh5{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+    
+}
 @keyframes logoh {
     from {
       transform: rotate(0deg);
@@ -189,6 +204,7 @@
       transform: rotate(360deg);
     }
   }
+ 
   table, th, td {
     border: 5px solid black;
     position: relative;
@@ -354,3 +370,4 @@
 .pa:hover{
     color: blue;
 }
+

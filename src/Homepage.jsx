@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import useSound from 'use-sound';
 import fanfareSfx from './css/bg.mp3';
-import { Reddit } from "@mui/icons-material";
+import GreenQr from './Greenqr'
 
 
 
@@ -85,9 +85,9 @@ export default function Hom() {
         window.location = '/red'
         
     }
-    function Rate(){
+    function Random(){
         
-        window.location = '/green'
+        window.location = '/random'
         
     }
 
@@ -110,9 +110,12 @@ export default function Hom() {
                         <li><Link to="/Home">🌎 </Link></li>
                     </div>
                     <div className="box-bgh1">
-                        Name : {Fullname} <br/><a className="pa"href="/password">Change Password</a>
+                    「 Name : {Fullname} 」 <br/><a className="pa"href="/password">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change Password</a>
                     </div>
                     <ul>
+                        <div className="box-bgh5">
+                            <li><Link to="/Qr">Scan now </Link></li>
+                        </div>
 
                         <div className="box-bgh2">
                             <li><Link to="/Rule">Rules </Link></li>
@@ -128,7 +131,7 @@ export default function Hom() {
                 <div className="containh">
                     <div className="headerh">
                         <h3><i>Breath of World</i></h3>
-
+                        
                     </div>
 
                 </div>
@@ -150,7 +153,7 @@ export default function Hom() {
                     <li>Red shops</li>
                     
                     </button>
-                    <button className="bog4"  onClick={Green}>
+                    <button className="bog4"  onClick={Random}>
                        
                     <li>rate us</li>
                     

@@ -1,34 +1,61 @@
 import "./css/Password.css"
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 
-export default function Pass()  {
-    function checkNewpass(password1,password2){
-        if (password1 == password2){
+export default function Pass() {
+
+    const [Fullname, setFullname] = useState("");
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        fetch('http://localhost:3333/getname/' + token, {
+            method: 'GET', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status == 'ok') {
+                    setFullname(data.usname)
+                }
+
+            })
+
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }, [])
+
+
+    function checkNewpass(newPassword, password2) {
+        if (newPassword == password2) {
             return true;
         }
-        else{
+        else {
             alert('Your passwords do not match.')
         }
 
     }
 
-    function checkPassword1(password1) {
+    function checkPassword1(newPassword) {
         var strength = 0;
-        if (password1.match(/[a-z]+/)) {
+        if (newPassword.match(/[a-z]+/)) {
             strength += 1;
         }
-        if (password1.match(/[A-Z]+/)) {
+        if (newPassword.match(/[A-Z]+/)) {
             strength += 1;
         }
-        if (password1.match(/[0-9]+/)) {
+        if (newPassword.match(/[0-9]+/)) {
             strength += 1;
         }
-        if (password1.match(/[$@#&!]+/)) {
+        if (newPassword.match(/[$@#&!]+/)) {
             strength += 1;
         }
-        if (password1.length < 8) {
+        if (newPassword.length < 8) {
 
             strength -= 4;
         }
@@ -100,91 +127,126 @@ export default function Pass()  {
         const data = new FormData(event.currentTarget);
 
         const jsonData = {
-            
+
             password: data.get('password'),
-            password1: data.get('password1'),
+            newPassword: data.get('newPassword'),
             password2: data.get('password2'),
         }
-
-        if (checkPassword(jsonData.password) && checkPassword1(jsonData.password1) && checkNewpass(jsonData.password1,jsonData.password2)) {
-            fetch('http://localhost:3333/register', {
-                method: 'POST', // or 'PUT'
+        if (checkPassword1(jsonData.newPassword) && checkNewpass(jsonData.newPassword, jsonData.password2)) {
+            const token = localStorage.getItem('token')
+            fetch('http://localhost:3333/newPassword', {
+                method: 'PUT', // or 'PUT'
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
                 },
-                body: JSON.stringify(jsonData),
+                body:JSON.stringify({token, newPassword: jsonData.newPassword, password: jsonData.password})
             })
                 .then(response => response.json())
                 .then(data => {
-                    if (data.status == 'ok') {
-                        alert('register success')
-                        window.location = '/Login'
-                    }
-
+                    if(data.status == 'error'){
+                        alert('Your password is Incorrect')
+                    }else{
+                    alert('Change password success')
+                    localStorage.removeItem('token')
+                    window.location = '/Login'
+                }
                 })
                 .catch((error) => {
                     console.error('Error:', error);
                 });
-
-
         }
 
     };
 
 
-return(
-    <div className="containerz bgrz">
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        fetch('http://localhost:3333/authen', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
 
-    <div className="menuoz">
-        <div className="logorz">
-            <li><Link to="/Home">🌎 </Link></li>
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status == 'ok') {
+                    // alert('authen success')
 
-        </div>
-        <ul>
-            <div className="boxs-bgz4">
-                <li><Link to="/Home">Home </Link></li>
+
+                }
+
+                else if (data.status == 'error') {
+
+                    // alert('Please login')
+                    localStorage.removeItem('token')
+                    window.location = '/Login '
+                }
+
+            })
+
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }, [])
+
+
+    return (
+        <div className="containerz bgrz">
+
+            <div className="menuoz">
+                <div className="logorz">
+                    <li><Link to="/Home">🌎 </Link></li>
+
+                </div>
+                <div className="box-bgz1">
+                        Name : {Fullname} 
+                    </div>
+                <ul>
+                    <div className="boxs-bgz4">
+                        <li><Link to="/Home">Home </Link></li>
+                    </div>
+
+
+                </ul>
             </div>
-            
 
-        </ul>
-    </div>
+            <div className="bodyz">
+                <div className="body-CreateAccountz">
+                    <h2 className="crz">Change password</h2>
+                    <div className="loginz">
 
-    <div className="bodyz">
-        <div className="body-CreateAccountz">
-            <h2 className="crz">Change password</h2>
-            <div className="loginz">
+                        <form noValidate onSubmit={handleSubmit} name="inpz">
 
-                <form noValidate onSubmit={handleSubmit} name="inpz">
-                   
-                    <input className="txz4" type="password" placeholder="Password" id="password" name="password" required/>
-                    <br />
-                    <input className="txz1" type="password" placeholder="New Password" id="password1" name="password1" required/>
-                    <br />
-                    <input className="txz2" type="password" placeholder="new Password again" id="password2" name="password2" required />
-                    <br />
+                            <input className="txz4" type="password" placeholder="Password" id="password" name="password" required />
+                            <br />
+                            <input className="txz1" type="password" placeholder="New Password" id="newPassword" name="newPassword" required />
+                            <br />
+                            <input className="txz2" type="password" placeholder="new Password again" id="password2" name="password2" required />
+                            <br />
 
 
-                    <button className="button-savez" type="submit">
+                            <button className="button-savez" type="submit">
 
-                        Submit
+                                Submit
 
-
-                    </button>
+                            </button>
 
 
 
 
-                </form>
+                        </form>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-    </div>
-</div>
 
 
 
 
-
-);
-
+    );
 }

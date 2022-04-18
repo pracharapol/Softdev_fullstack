@@ -29,10 +29,10 @@ export default function Rank() {
     }, [])
 
 
-    const[Scoreuser,setScoreuser] = useState("");
+    const [Scoreuser, setScoreuser] = useState("");
     useEffect(() => {
         const token = localStorage.getItem('token')
-        fetch('http://localhost:3333/getscore/'+ token, {
+        fetch('http://localhost:3333/getscore/' + token, {
             method: 'GET', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -52,35 +52,35 @@ export default function Rank() {
                 console.error('Error:', error);
             });
     }, [])
-    
+
     const token = localStorage.getItem('token')
-        fetch('http://localhost:3333/authen', {
-            method: 'POST', // or 'PUT'
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token
-            },
+    fetch('http://localhost:3333/authen', {
+        method: 'POST', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        },
 
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status == 'ok') {
+                // alert('authen success')
+
+
+            }
+            else if (data.status == 'error') {
+                // alert('Please login')
+                localStorage.removeItem('token')
+                window.location = '/Login '
+            }
         })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status == 'ok') {
-                    // alert('authen success')
+
+        .catch((error) => {
+            console.error('Error:', error);
+        });
 
 
-                }
-                else if(data.status == 'error') {
-                    // alert('Please login')
-                    localStorage.removeItem('token')
-                    window.location = '/Login '
-                }
-            })
-
-            .catch((error) => {
-                console.error('Error:', error);
-            });
- 
-            
     const handleLogout = (event) => {
         event.preventDefault();
         localStorage.removeItem('token')
@@ -89,7 +89,76 @@ export default function Rank() {
     }
 
 
-    
+    const [Fullrank, setFullrank] = useState("");
+    const [Fullrank1, setFullrank1] = useState("");
+    const [Fullrank2, setFullrank2] = useState("");
+    const [Fullrank3, setFullrank3] = useState("");
+    const [Fullrank4, setFullrank4] = useState("");
+    const [Fullrank5, setFullrank5] = useState("");
+    const [Fullrank6, setFullrank6] = useState("");
+    const [Fullrank7, setFullrank7] = useState("");
+    const [Fullrank8, setFullrank8] = useState("");
+    const [Fullrank9, setFullrank9] = useState("");
+
+    const [Fullscore, setFullscore] = useState("");
+    const [Fullscore1, setFullscore1] = useState("");
+    const [Fullscore2, setFullscore2] = useState("");
+    const [Fullscore3, setFullscore3] = useState("");
+    const [Fullscore4, setFullscore4] = useState("");
+    const [Fullscore5, setFullscore5] = useState("");
+    const [Fullscore6, setFullscore6] = useState("");
+    const [Fullscore7, setFullscore7] = useState("");
+    const [Fullscore8, setFullscore8] = useState("");
+    const [Fullscore9, setFullscore9] = useState("");
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        fetch('http://localhost:3333/ranking', {
+            method: 'GET', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+
+            },
+
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status == 'ok') {
+                    setFullrank(data.usrank)
+                    setFullrank1(data.usrank1)
+                    setFullrank2(data.usrank2)
+                    setFullrank3(data.usrank3)
+                    setFullrank4(data.usrank4)
+                    setFullrank5(data.usrank5)
+                    setFullrank6(data.usrank6)
+                    setFullrank7(data.usrank7)
+                    setFullrank8(data.usrank8)
+                    setFullrank9(data.usrank9)
+
+
+                    setFullscore(data.srank)
+                    setFullscore1(data.srank1)
+                    setFullscore2(data.srank2)
+                    setFullscore3(data.srank3)
+                    setFullscore4(data.srank4)
+                    setFullscore5(data.srank5)
+                    setFullscore6(data.srank6)
+                    setFullscore7(data.srank7)
+                    setFullscore8(data.srank8)
+                    setFullscore9(data.srank9)
+                }
+
+            })
+
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }, [])
+
+
+
+
+
+
 
 
     return (
@@ -100,16 +169,16 @@ export default function Rank() {
                     <li><Link to="/Home">🌎 </Link></li>
                 </div>
                 <div className="box-bg0">
-                        Name : {Fullname} ➢ Your score : {Scoreuser} 
-                    </div>
-                
+                    「 Name : {Fullname} 」 ➢ 「 Your score : {Scoreuser}   Points 」
+                </div>
+
                 <ul>
                     <div className="box-bg1">
                         <li><Link to="/Home">Home </Link></li>
                     </div>
-                    
+
                     <div className="box-bg3">
-                        <li><Link to="/Rule">About rules </Link></li>
+                        <li><Link to="/Rule">Rules </Link></li>
                     </div>
                     <button className="box-bg4" onClick={handleLogout}>
                         <li>Logout</li>
@@ -119,38 +188,69 @@ export default function Rank() {
             <div className="contain">
                 <div className="header">
                     <h3><i>Breath of World</i></h3>
-                    <h1>Ranking</h1>
+                    <h1>Top10 Ranking</h1>
                 </div>
                 <div className="grid-card">
                     <body>
                         <table>
                             <tr>
+                                <th>No.</th>
                                 <th>Name</th>
                                 <th>Score</th>
                             </tr>
                             <tr>
-                                <td>Peter</td>
-                                <td>300</td>
+                                <td>1.</td>
+                                <td>{Fullrank}</td>
+                                <td>{Fullscore}</td>
                             </tr>
                             <tr>
-                                <td>Lois</td>
-                                <td>256</td>
+                                <td>2.</td>
+                                <td>{Fullrank1}</td>
+                                <td>{Fullscore1}</td>
                             </tr>
                             <tr>
-                                <td>Jamo</td>
-                                <td>218</td>
+                                <td>3.</td>
+                                <td>{Fullrank2}</td>
+                                <td>{Fullscore2}</td>
                             </tr>
                             <tr>
-                                <td>Nigga Ta</td>
-                                <td>205</td>
+                                <td>4.</td>
+                                <td>{Fullrank3}</td>
+                                <td>{Fullscore3}</td>
                             </tr>
                             <tr>
-                                <td>Kanot</td>
-                                <td>200</td>
+                                <td>5.</td>
+                                <td>{Fullrank4}</td>
+                                <td>{Fullscore4}</td>
                             </tr>
                             <tr>
-                                <td>{Fullname}</td>
-                                <td>{Scoreuser}</td>
+                                <td>6.</td>
+                                <td>{Fullrank5}</td>
+                                <td>{Fullscore5}</td>
+                            </tr>
+
+                            <tr>
+                                <td>7.</td>
+                                <td>{Fullrank6}</td>
+                                <td>{Fullscore6}</td>
+                            </tr>
+
+                            <tr>
+                                <td>8.</td>
+                                <td>{Fullrank7}</td>
+                                <td>{Fullscore7}</td>
+                            </tr>
+
+                            <tr>
+                                <td>9.</td>
+                                <td>{Fullrank8}</td>
+                                <td>{Fullscore8}</td>
+                            </tr>
+
+                            <tr>
+                                <td>10.</td>
+                                <td>{Fullrank9}</td>
+                                <td>{Fullscore9}</td>
                             </tr>
                         </table>
                     </body>
