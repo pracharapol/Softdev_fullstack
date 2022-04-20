@@ -15,7 +15,6 @@ export default function Pass() {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
             },
-
         })
             .then(response => response.json())
             .then(data => {

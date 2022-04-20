@@ -228,8 +228,6 @@ export default function Ran() {
 
 
 
-    
-
     return (
         <div>
 
