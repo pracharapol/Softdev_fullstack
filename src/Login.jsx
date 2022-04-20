@@ -59,7 +59,7 @@ export default function SignInSide() {
         <div className="containi">
             <div className="body-logini">
                 <div className="headeri">
-                    <h3 className="Bowi"><i>Breath of World</i></h3>
+                    <h3 className="Bowi"><i>Breath of the World</i></h3>
                     <h1>Login</h1>
                 </div>
                 <div className="loginpi">

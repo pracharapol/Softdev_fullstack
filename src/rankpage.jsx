@@ -155,12 +155,6 @@ export default function Rank() {
     }, [])
 
 
-
-
-
-
-
-
     return (
         <div class="container bg">
 
@@ -187,7 +181,7 @@ export default function Rank() {
             </div>
             <div className="contain">
                 <div className="header">
-                    <h3><i>Breath of World</i></h3>
+                    <h3><i>Breath of the World</i></h3>
                     <h1>Top10 Ranking</h1>
                 </div>
                 <div className="grid-card">

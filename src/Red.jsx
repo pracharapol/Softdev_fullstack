@@ -56,7 +56,7 @@ export default function Green() {
                     </div>
                     
                     <div className="box-bgyr3">
-                        <li><Link to="/Rule">About rules </Link></li>
+                        <li><Link to="/Rule">Rules </Link></li>
                     </div>
                     <div className="box-bgyr2">
                         <li><Link to="/Rankp">Ranking </Link></li>
@@ -68,7 +68,7 @@ export default function Green() {
             </div>
             <div className="containyr">
                 <div className="headeryr">
-                    <h3><i>Breath of World</i></h3>
+                    <h3><i>Breath of the World</i></h3>
                     <h1>Red shops</h1>
                 </div>
                 

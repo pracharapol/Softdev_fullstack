@@ -38,8 +38,21 @@ const Greenqr = () => {
                 token: token
             })
         })
+        fetch('http://localhost:3333/updatecoin', {
+            method: 'PUT', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify({
+                type: value,
+                token: token
+            })
+        })
             .then(() => navigate("/rankp"))
     }
+
+    
 
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -88,7 +101,7 @@ const Greenqr = () => {
             </div>
             <div className="containqr">
                 <div className="headerqr">
-                    <h3><i>Breath of World</i></h3>
+                    <h3><i>Breath of the World</i></h3>
                     <h1>QR Scan</h1>
                 </div>
 

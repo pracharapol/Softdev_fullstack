@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Lucida Handwriting;
+    font-family:'Bahnschrift SemiBold';
+    font-style: normal;
 }
 * a{
     text-decoration: none;
@@ -13,6 +14,7 @@
 .containerqr{
     position: relative;
     min-height: 100vh;
+    min-width: 200vh;
 }
 .bgqr{
     width: 100%;
@@ -37,7 +39,7 @@
 
 .menuqr{
     position: relative;
-    width: 95%;
+    width: 100%;
     height: 10vh;
     margin: 0 auto;
     display: flex;
@@ -49,7 +51,7 @@
     background-attachment: fixed;
     position: relative;
     border: 5px #fff;
-    border-radius: 25px;
+    border-radius: 0px;
     border: 2px solid rgb(0, 0, 0);
 }
 .logoqr {
@@ -70,7 +72,7 @@
     display: flex;
     transition: 0.4s;
     grid-gap: 10px;
-    
+    padding: 0 140px;
    
 }
 .menuqr ul li{

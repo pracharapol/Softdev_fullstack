@@ -202,7 +202,7 @@ export default function Pass() {
 
                 </div>
                 <div className="box-bgz1">
-                        Name : {Fullname} 
+                「 Name : {Fullname} 」
                     </div>
                 <ul>
                     <div className="boxs-bgz4">

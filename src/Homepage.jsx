@@ -130,7 +130,7 @@ export default function Hom() {
                 </div>
                 <div className="containh">
                     <div className="headerh">
-                        <h3><i>Breath of World</i></h3>
+                        <h3><i>Breath of the World</i></h3>
                         
                     </div>
 
@@ -155,7 +155,7 @@ export default function Hom() {
                     </button>
                     <button className="bog4"  onClick={Random}>
                        
-                    <li>rate us</li>
+                    <li>Rewards here</li>
                     
                     </button>
                     
