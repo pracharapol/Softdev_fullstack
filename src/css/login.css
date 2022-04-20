@@ -22,25 +22,27 @@
 }
 .loginpi{
     top: 6%;
-    margin: 5% 5%;
-    border: 2px solid rgb(255, 255, 255);
+    margin: 5% 0;
+    border: 1px solid rgb(255, 255, 255);
     padding: 5%;
-    border-radius: 50px;
-    background-image: url("rulebg3.webp");
-    text-align: center;
+    border-radius: 25px;
+    background-color: rgb(24, 24, 24);
+    
     background-size: cover;
+    background-attachment: fixed;
     position: relative;
     background-position: center;
    
     
 }
 .containi .tx{
-    margin: 1%;
+    margin: 1% ;
     border-radius: 5px;
     font-size: 20px;
-    border: 2px solid rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
     text-align: center;
     position: relative;
+    
     
     
 }
@@ -62,15 +64,15 @@
     top: 7%;
     width: 60%;
     /* background-color: aquamarine; */
-    padding: 50px;
+    padding: 50px 180px;
     background-size: cover;
     text-align: center;
     position: relative;
     
-    background-image: url("rulebg.webp");
+    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 50px;
     text-shadow:0.1em 0.1em rgb(3, 25, 28) ;
-    border: 2px solid rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
     
 }
 .button-savei{
@@ -81,7 +83,7 @@
     position: relative;
     letter-spacing: 1px;
     margin-top: 20px;
-    border: 2px solid rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
     letter-spacing: 1px;
     padding: 1px 5px;
@@ -112,7 +114,7 @@
     z-index: -2;
     background-size: cover;
     background-position: center;
-    filter: brightness(80%);
+    filter: brightness(60%);
     background-attachment: fixed;
 }
 
@@ -276,4 +278,15 @@
       
     }
   }
-  
+  .containi .email{
+      padding-left: 25%;
+      text-align: left;
+      color: #fff;
+      text-shadow:0.1em 0.1em rgb(0, 0, 0) ;
+  }
+  .containi .password{
+    padding-left: 25%;
+    text-align: left;
+    color: #fff;
+    text-shadow:0.1em 0.1em rgb(0, 0, 0) ;
+}

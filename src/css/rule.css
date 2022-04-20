@@ -214,7 +214,7 @@
     text-align: center;
     position: relative;
     background-attachment: fixed;
-    background-image: url("boxbg.png");
+    background-color: rgba(0, 0, 0,0.8);
     border-radius: 50px;
     border: 2px solid rgb(255, 255, 255);
     background-size: cover;

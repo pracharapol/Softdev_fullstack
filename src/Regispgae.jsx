@@ -49,7 +49,7 @@ export default function SignUpSide() {
                 return false;
             case 2:
                 return true;
-           
+
 
 
             default: return true
@@ -166,14 +166,27 @@ export default function SignUpSide() {
                     <div className="login">
 
                         <form noValidate onSubmit={handleSubmit} name="inp">
-                            <input className="tx3" type="text" placeholder="Firstname" id="firstname" name="firstname" />
+                            <div className="email1">
+                                <label >Firstname</label>
+                            </div>
+                            <input className="tx3" type="text" id="firstname" name="firstname" />
+
+                            <div className="email1">
+                                <label >Lastname</label>
+                            </div>
+                            <input className="tx4" type="text" id="lastname" name="lastname" />
+
+                            <div className="email1">
+                                <label >Email Adress</label>
+                            </div>
+                            <input className="tx1" type="email" id="email" name="email" />
+
+                            <div className="email1">
+                                <label >Password</label>
+                            </div>
+                            <input className="tx2" type="password" id="password" name="password" required />
                             <br />
-                            <input className="tx4" type="text" placeholder="Lastname" id="lastname" name="lastname" />
-                            <br />
-                            <input className="tx1" type="email" placeholder="E-mail" id="email" name="email" />
-                            <br />
-                            <input className="tx2" type="password" placeholder="Password" id="password" name="password" required />
-                            <br />
+
 
 
                             <button className="button-save" type="submit">

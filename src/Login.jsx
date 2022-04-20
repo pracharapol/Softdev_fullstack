@@ -64,10 +64,18 @@ export default function SignInSide() {
                 </div>
                 <div className="loginpi">
                     <form  noValidate onSubmit={handleSubmit} name="inp">
-                        <label for="email"></label>
-                        <input className="tx" type="email" placeholder="Email" id="email" name="email"/>
-                        <br />
-                        <input className="tx" type="password" placeholder="Password" id="password" name="password"/>
+                        <div className="email">
+                        <label >Email Adress</label>
+                        </div>
+                        <div>
+                        <input className="tx" type="email"  id="email" name="email"/>
+                        </div>
+                        <div className="password">
+                        <label >Password</label>
+                        </div>
+                        <div>
+                        <input className="tx" type="password"  id="password" name="password"/>
+                        </div>
                         <br />
 
                         <button className="button-savei">
