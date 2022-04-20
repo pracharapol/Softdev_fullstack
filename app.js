@@ -12,6 +12,7 @@ const secret = 'fullstack-login2022'
 app.use(cors())
 
 const mysql = require('mysql2');
+const req = require('express/lib/request')
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -172,6 +173,31 @@ app.get('/getscore/:token', function (req, res) {
     }
 })
 
+app.get('/getcoin/:token', function (req, res) {
+    try {
+        const decode = jwt.verify(req.params.token, secret);
+        const { email } = decode
+        connection.execute(
+            'SELECT coin FROM users WHERE email=?',
+            [email],
+            function (err, results,) {
+                if (err) {
+                    res.json({ status: 'error', message: err })
+                    return
+                }
+                if (results.length == 0) {
+                    res.json({ status: 'error', message: 'no user found' })
+                    return
+                }
+                let Uscoinn = results[0].coin
+                res.json({ status: 'ok', message: ' get usname sussess', Uscoinn: Uscoinn })
+            }
+        )
+    } catch (err) {
+        res.json({ status: 'error', message: err.message })
+    }
+})
+
 
 app.put('/newPassword', jsonParser, function (req, res) {
     const decode = jwt.verify(req.body.token, secret);
@@ -229,11 +255,11 @@ app.put('/newPassword', jsonParser, function (req, res) {
 const check = async (type) => {
     if (type == 'Green') {
         
-        return 10
+        return 3
     }
     else if (type == 'Yellow') {
         
-        return 5
+        return 2
     }
     else if (type == 'Red') {
         
@@ -241,6 +267,8 @@ const check = async (type) => {
     }
     return 0
 }
+
+
 
 app.put('/updatescore', jsonParser, async function (req, res) {
     try {
@@ -277,6 +305,172 @@ app.put('/updatescore', jsonParser, async function (req, res) {
                             return res.json({ status: 'ok', message: ' get usname sussess', Uscore: Uscore })
                         }
                     })
+                }
+            })
+    } catch (err) {
+        return res.json({ status: 'error', message: err.message })
+    }
+})
+
+
+app.put('/updatecoin', jsonParser, async function (req, res) {
+    try {
+        console.log(req.body)
+        const decode = jwt.verify(req.body.token, secret);
+        const { email } = decode
+        const type = req.body.type
+        const count = await check(type)
+        connection.query(
+            'SELECT coin, id FROM users WHERE email=?',
+            [email],
+            function (err, results, fields) {
+                if (err) {
+                    res.json({ status: 'error', message: err })
+                    return
+                }
+                console.log(results)
+                if (results.length == 0) {
+                    res.json({ status: 'error', message: 'no user found' })
+                    return
+                }
+                else{
+                    let Uscoin = results[0].coin + count
+                connection.query(
+                    "UPDATE users SET coin = ? WHERE id = ?",
+                    [Uscoin, results[0].id],
+                    function (errors1, results1, fields1) {
+                        if (errors1 || results1.length == 0) {
+                            res.json({ status: 'error', message: err })
+                            return
+                        }
+                        if (results1) {
+                            
+                            return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin: Uscoin })
+                        }
+                    })
+                }
+            })
+    } catch (err) {
+        return res.json({ status: 'error', message: err.message })
+    }
+})
+
+const checkcoin = async (type) => {
+    
+    if (type == 'discount10') {
+       
+        return 100
+    }
+    else if (type == 'discount20') {
+        
+        return 200
+    }
+    else if (type == 'discount50') {
+        
+        return 500
+    }
+    else if (type == 'discount100') {
+        
+        return 1000
+    }
+    return 0
+}
+app.put('/deletecoin', jsonParser, async function (req, res) {
+    try {
+        console.log(req.body)
+        const decode = jwt.verify(req.body.token, secret);
+        const { email } = decode
+        const type = req.body.type
+        const count = await checkcoin(type)
+        connection.query(
+            'SELECT coin, id FROM users WHERE email=?',
+            [email],
+            function (err, results, fields) {
+                if (err) {
+                    res.json({ status: 'error', message: err })
+                    return
+                }
+                console.log(results)
+                if (results.length == 0) {
+                    res.json({ status: 'error', message: 'no user found' })
+                    return
+                }
+                else if(type == 'discount10' && results[0].coin>=100){
+                    
+                    let Uscoin1 = results[0].coin - count
+                
+                connection.query(
+                    "UPDATE users SET coin = ? WHERE id = ?",
+                    [Uscoin1, results[0].id],
+                    function (errors1, results1, fields1) {
+                        if (errors1 || results1.length == 0) {
+                            res.json({ status: 'error', message: err })
+                            return
+                        }
+                        if (results1) {
+                            
+                            return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin1: Uscoin1 })
+                        }
+                    })
+                }
+                else if(type == 'discount20' && results[0].coin>=200){
+                    
+                    let Uscoin1 = results[0].coin - count
+                
+                connection.query(
+                    "UPDATE users SET coin = ? WHERE id = ?",
+                    [Uscoin1, results[0].id],
+                    function (errors1, results1, fields1) {
+                        if (errors1 || results1.length == 0) {
+                            res.json({ status: 'error', message: err })
+                            return
+                        }
+                        if (results1) {
+                            
+                            return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin1: Uscoin1 })
+                        }
+                    })
+                }
+                else if(type == 'discount50'&& results[0].coin>=500){
+                    
+                    let Uscoin1 = results[0].coin - count
+                
+                connection.query(
+                    "UPDATE users SET coin = ? WHERE id = ?",
+                    [Uscoin1, results[0].id],
+                    function (errors1, results1, fields1) {
+                        if (errors1 || results1.length == 0) {
+                            res.json({ status: 'error', message: err })
+                            return
+                        }
+                        if (results1) {
+                            
+                            return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin1: Uscoin1 })
+                        }
+                    })
+                }
+                else if(type == 'discount100'&& results[0].coin>=1000){
+                    
+                    let Uscoin1 = results[0].coin - count
+                
+                connection.query(
+                    "UPDATE users SET coin = ? WHERE id = ?",
+                    [Uscoin1, results[0].id],
+                    function (errors1, results1, fields1) {
+                        if (errors1 || results1.length == 0) {
+                            res.json({ status: 'error', message: err })
+                            return
+                        }
+                        if (results1) {
+                            
+                            return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin1: Uscoin1 })
+                        }
+                    })
+                }
+                else{
+                    
+                    res.json({ status: 'error', message: err })
+                    return
                 }
             })
     } catch (err) {
