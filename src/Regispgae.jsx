@@ -184,11 +184,11 @@ export default function SignUpSide() {
                             <div className="email1">
                                 <label >Password</label>
                             </div>
-                            <input className="tx2" type="password" id="password" name="password" required />
+                            <input className="tx2" type="password" id="password" name="password"  />
                             <br />
-
-
-
+                            <br />
+                            <br />
+                            
                             <button className="button-save" type="submit">
 
                                 Sign up
@@ -196,10 +196,9 @@ export default function SignUpSide() {
 
                             </button>
 
-
-
-
                         </form>
+                        <br />
+                    <div><a className="txs1" href="/login">have an account? Sign in</a></div>
                     </div>
                 </div>
 
