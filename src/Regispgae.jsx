@@ -104,10 +104,11 @@ export default function SignUpSide() {
         const data = new FormData(event.currentTarget);
 
         const jsonData = {
-            email: data.get('email'),
-            password: data.get('password'),
             fname: data.get('firstname'),
             Iname: data.get('lastname'),
+            email: data.get('email'),
+            password: data.get('password'),
+           
         }
 
         if (checkPassword(jsonData.password) && checkEmail(jsonData.email) && checkName(jsonData.fname, jsonData.Iname)) {
@@ -127,9 +128,9 @@ export default function SignUpSide() {
 
                     if (data.status == 'emailDuplecate') {
                         alert('register failed because email duplecate')
-                    } else if (data.status == 'emailnameDuplecate') {
-                        alert('register failed because emailname of Firsrname or Lastname duplecate')
-                    } else if (data.status == 'nameDuplecate') {
+                    } 
+                   
+                    if (data.status == 'nameDuplecate') {
                         alert('register failed because Firsrname and Lastname duplecate')
                     }
 
