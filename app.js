@@ -22,21 +22,12 @@ const connection = mysql.createConnection({
 
 const checkEmailError = (req, res, results) => {
     if (results.length > 0) {
-        results.forEach(element => {
-            if (((element.email.toLowerCase() == req.body.email.toLowerCase()))) {
-                return res
-                .json({ status: 'emailDuplecate' })
-                
-                
-            }
-            if ((element.fname.toLowerCase() == req.body.fname.toLowerCase()) && (element.Iname.toLowerCase() == req.body.Iname.toLowerCase())) {
-                return  res
-               .json({ status: 'nameDuplecate' })
-                
+        for (let i = 0; i < results.length; i++) {
+            if (((results[i].email.toLowerCase() == req.body.email.toLowerCase())) || [((results[i].fname.toLowerCase() == req.body.fname.toLowerCase()) && (results[i].Iname.toLowerCase() == req.body.Iname.toLowerCase()))]) {
+                return true
             }
         }
-
-        );
+        return false
     }
 }
 
@@ -47,37 +38,33 @@ app.post('/register', jsonParser, function (req, res, next) {
         function (err, results) {
             if (err) {
                 return res
-                .json({ status: 'error', message: err })
-                
+                    .json({ status: 'error', message: err })
             }
             else {
-                if (results.length > 0) {
-                    
-                    checkEmailError(req, res, results)
-                }  
-                 else {
-                        bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
-                            connection.execute(
-                                'INSERT INTO users (email, password, fname, Iname) VALUES (?, ?, ?, ?)',
+                if (checkEmailError(req, res, results)) {
+                    return res.json({ status: 'email or name Duplecate' });
+                }
+                else {
+                    bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
+                        connection.execute(
+                            'INSERT INTO users (email, password, fname, Iname) VALUES (?, ?, ?, ?)',
 
-                                [req.body.email, hash, req.body.fname, req.body.Iname],
-                                function (err, results, fields) {
-                                    if (err) {
-                                        return res
-                                       .json({ status: 'error', message: err })
-                                        
-                                    }
+                            [req.body.email, hash, req.body.fname, req.body.Iname],
+                            function (err, results, fields) {
+                                if (err) {
                                     return res
-                                    .json({ status: 'ok' })
+                                        .json({ status: 'error', message: err })
+
                                 }
-                            );
-                        });
-                    }
-                
+                                return res
+                                    .json({ status: 'ok' })
+                            }
+                        );
+                    });
+                }
             }
         }
     )
-
 })
 
 
@@ -146,7 +133,6 @@ app.get('/getname/:token', function (req, res) {
     } catch (err) {
         res.json({ status: 'error', message: err.message })
     }
-
 })
 
 
@@ -208,7 +194,7 @@ app.put('/newPassword', jsonParser, function (req, res) {
         'SELECT password FROM users WHERE email=?', [email],
         function (err, users, fields) {
             bcrypt.compare(req.body.password, users[0].password, function (err, isLogin) {
-                
+
                 if (isLogin) {
 
                     bcrypt.hash(req.body.newPassword, saltRounds, function (err, hash) {
@@ -231,7 +217,7 @@ app.put('/newPassword', jsonParser, function (req, res) {
                                     return
                                 }
                                 else {
-                                   
+
                                     res.send(results)
                                     return
                                 }
@@ -246,8 +232,6 @@ app.put('/newPassword', jsonParser, function (req, res) {
                     res.json({ status: 'error', message: err })
                     return
                 }
-
-
             }
             );
         });
@@ -256,20 +240,19 @@ app.put('/newPassword', jsonParser, function (req, res) {
 
 const check = async (type) => {
     if (type == 'Green') {
-        
+
         return 3
     }
     else if (type == 'Yellow') {
-        
+
         return 2
     }
     else if (type == 'Red') {
-        
+
         return 1
     }
     return 0
 }
-
 
 
 app.put('/updatescore', jsonParser, async function (req, res) {
@@ -292,21 +275,21 @@ app.put('/updatescore', jsonParser, async function (req, res) {
                     res.json({ status: 'error', message: 'no user found' })
                     return
                 }
-                else{
+                else {
                     let Uscore = results[0].score + count
-                connection.query(
-                    "UPDATE users SET score = ? WHERE id = ?",
-                    [Uscore, results[0].id],
-                    function (errors1, results1, fields1) {
-                        if (errors1 || results1.length == 0) {
-                            res.json({ status: 'error', message: err })
-                            return
-                        }
-                        if (results1) {
-                            
-                            return res.json({ status: 'ok', message: ' get usname sussess', Uscore: Uscore })
-                        }
-                    })
+                    connection.query(
+                        "UPDATE users SET score = ? WHERE id = ?",
+                        [Uscore, results[0].id],
+                        function (errors1, results1, fields1) {
+                            if (errors1 || results1.length == 0) {
+                                res.json({ status: 'error', message: err })
+                                return
+                            }
+                            if (results1) {
+
+                                return res.json({ status: 'ok', message: ' get usname sussess', Uscore: Uscore })
+                            }
+                        })
                 }
             })
     } catch (err) {
@@ -335,21 +318,21 @@ app.put('/updatecoin', jsonParser, async function (req, res) {
                     res.json({ status: 'error', message: 'no user found' })
                     return
                 }
-                else{
+                else {
                     let Uscoin = results[0].coin + count
-                connection.query(
-                    "UPDATE users SET coin = ? WHERE id = ?",
-                    [Uscoin, results[0].id],
-                    function (errors1, results1, fields1) {
-                        if (errors1 || results1.length == 0) {
-                            res.json({ status: 'error', message: err })
-                            return
-                        }
-                        if (results1) {
-                            
-                            return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin: Uscoin })
-                        }
-                    })
+                    connection.query(
+                        "UPDATE users SET coin = ? WHERE id = ?",
+                        [Uscoin, results[0].id],
+                        function (errors1, results1, fields1) {
+                            if (errors1 || results1.length == 0) {
+                                res.json({ status: 'error', message: err })
+                                return
+                            }
+                            if (results1) {
+
+                                return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin: Uscoin })
+                            }
+                        })
                 }
             })
     } catch (err) {
@@ -357,26 +340,29 @@ app.put('/updatecoin', jsonParser, async function (req, res) {
     }
 })
 
+
 const checkcoin = async (type) => {
-    
+
     if (type == 'discount10') {
-       
+
         return 100
     }
     else if (type == 'discount20') {
-        
+
         return 200
     }
     else if (type == 'discount50') {
-        
+
         return 500
     }
     else if (type == 'discount100') {
-        
+
         return 1000
     }
     return 0
 }
+
+
 app.put('/deletecoin', jsonParser, async function (req, res) {
     try {
         console.log(req.body)
@@ -397,80 +383,80 @@ app.put('/deletecoin', jsonParser, async function (req, res) {
                     res.json({ status: 'error', message: 'no user found' })
                     return
                 }
-                else if(type == 'discount10' && results[0].coin>=100){
-                    
+                else if (type == 'discount10' && results[0].coin >= 100) {
+
                     let Uscoin1 = results[0].coin - count
-                
-                connection.query(
-                    "UPDATE users SET coin = ? WHERE id = ?",
-                    [Uscoin1, results[0].id],
-                    function (errors1, results1, fields1) {
-                        if (errors1 || results1.length == 0) {
-                            res.json({ status: 'error', message: err })
-                            return
-                        }
-                        if (results1) {
-                            
-                            return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin1: Uscoin1 })
-                        }
-                    })
+
+                    connection.query(
+                        "UPDATE users SET coin = ? WHERE id = ?",
+                        [Uscoin1, results[0].id],
+                        function (errors1, results1, fields1) {
+                            if (errors1 || results1.length == 0) {
+                                res.json({ status: 'error', message: err })
+                                return
+                            }
+                            if (results1) {
+
+                                return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin1: Uscoin1 })
+                            }
+                        })
                 }
-                else if(type == 'discount20' && results[0].coin>=200){
-                    
+                else if (type == 'discount20' && results[0].coin >= 200) {
+
                     let Uscoin1 = results[0].coin - count
-                
-                connection.query(
-                    "UPDATE users SET coin = ? WHERE id = ?",
-                    [Uscoin1, results[0].id],
-                    function (errors1, results1, fields1) {
-                        if (errors1 || results1.length == 0) {
-                            res.json({ status: 'error', message: err })
-                            return
-                        }
-                        if (results1) {
-                            
-                            return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin1: Uscoin1 })
-                        }
-                    })
+
+                    connection.query(
+                        "UPDATE users SET coin = ? WHERE id = ?",
+                        [Uscoin1, results[0].id],
+                        function (errors1, results1, fields1) {
+                            if (errors1 || results1.length == 0) {
+                                res.json({ status: 'error', message: err })
+                                return
+                            }
+                            if (results1) {
+
+                                return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin1: Uscoin1 })
+                            }
+                        })
                 }
-                else if(type == 'discount50'&& results[0].coin>=500){
-                    
+                else if (type == 'discount50' && results[0].coin >= 500) {
+
                     let Uscoin1 = results[0].coin - count
-                
-                connection.query(
-                    "UPDATE users SET coin = ? WHERE id = ?",
-                    [Uscoin1, results[0].id],
-                    function (errors1, results1, fields1) {
-                        if (errors1 || results1.length == 0) {
-                            res.json({ status: 'error', message: err })
-                            return
-                        }
-                        if (results1) {
-                            
-                            return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin1: Uscoin1 })
-                        }
-                    })
+
+                    connection.query(
+                        "UPDATE users SET coin = ? WHERE id = ?",
+                        [Uscoin1, results[0].id],
+                        function (errors1, results1, fields1) {
+                            if (errors1 || results1.length == 0) {
+                                res.json({ status: 'error', message: err })
+                                return
+                            }
+                            if (results1) {
+
+                                return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin1: Uscoin1 })
+                            }
+                        })
                 }
-                else if(type == 'discount100'&& results[0].coin>=1000){
-                    
+                else if (type == 'discount100' && results[0].coin >= 1000) {
+
                     let Uscoin1 = results[0].coin - count
-                
-                connection.query(
-                    "UPDATE users SET coin = ? WHERE id = ?",
-                    [Uscoin1, results[0].id],
-                    function (errors1, results1, fields1) {
-                        if (errors1 || results1.length == 0) {
-                            res.json({ status: 'error', message: err })
-                            return
-                        }
-                        if (results1) {
-                            
-                            return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin1: Uscoin1 })
-                        }
-                    })
+
+                    connection.query(
+                        "UPDATE users SET coin = ? WHERE id = ?",
+                        [Uscoin1, results[0].id],
+                        function (errors1, results1, fields1) {
+                            if (errors1 || results1.length == 0) {
+                                res.json({ status: 'error', message: err })
+                                return
+                            }
+                            if (results1) {
+
+                                return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin1: Uscoin1 })
+                            }
+                        })
                 }
-                else{
-                    
+                else {
+
                     res.json({ status: 'error', message: err })
                     return
                 }
@@ -483,37 +469,38 @@ app.put('/deletecoin', jsonParser, async function (req, res) {
 
 app.get('/ranking', function (req, res) {
 
-    connection.connect(function(err) {
+    connection.connect(function (err) {
         if (err) throw err;
-        
+
         connection.query('SELECT Iname,fname, score FROM users ORDER BY score DESC', function (err, results) {
-          if (err) throw err;
-          
-          let Usrank = results[0].fname + ["   "] + ["   "] + results[0].Iname 
-          let Usrank1 = results[1].fname + ["   "] + ["   "] + results[1].Iname 
-          let Usrank2 = results[2].fname + ["   "] + ["   "] + results[2].Iname 
-          let Usrank3 = results[3].fname + ["   "] + ["   "] + results[3].Iname 
-          let Usrank4 = results[4].fname + ["   "] + ["   "] + results[4].Iname
-          let Usrank5 = results[5].fname + ["   "] + ["   "] + results[5].Iname
-          let Usrank6 = results[6].fname + ["   "] + ["   "] + results[6].Iname 
-          let Usrank7 = results[7].fname + ["   "] + ["   "] + results[7].Iname 
-          let Usrank8 = results[8].fname + ["   "] + ["   "] + results[8].Iname
-          let Usrank9 = results[9].fname + ["   "] + ["   "] + results[9].Iname
-          let Srank =results[0].score 
-          let Srank1 =results[1].score 
-          let Srank2 =results[2].score 
-          let Srank3 =results[3].score 
-          let Srank4 =results[4].score 
-          let Srank5 =results[5].score
-          let Srank6 =results[6].score
-          let Srank7 =results[7].score
-          let Srank8 =results[8].score
-          let Srank9 =results[9].score 
-                res.json({ status: 'ok', message: 'success', usrank: Usrank, usrank1:Usrank1, usrank2:Usrank2, usrank3:Usrank3, usrank4:Usrank4, usrank5:Usrank5, usrank6: Usrank6, usrank7: Usrank7, usrank8: Usrank8, usrank9: Usrank9, srank:Srank, srank1:Srank1, srank2:Srank2, srank3:Srank3, srank4:Srank4,srank5:Srank5 ,srank6:Srank6, srank7:Srank7, srank8:Srank8, srank9:Srank9, })
-                  
+            if (err) throw err;
+
+            let Usrank = results[0].fname + ["   "] + ["   "] + results[0].Iname
+            let Usrank1 = results[1].fname + ["   "] + ["   "] + results[1].Iname
+            let Usrank2 = results[2].fname + ["   "] + ["   "] + results[2].Iname
+            let Usrank3 = results[3].fname + ["   "] + ["   "] + results[3].Iname
+            let Usrank4 = results[4].fname + ["   "] + ["   "] + results[4].Iname
+            let Usrank5 = results[5].fname + ["   "] + ["   "] + results[5].Iname
+            let Usrank6 = results[6].fname + ["   "] + ["   "] + results[6].Iname
+            let Usrank7 = results[7].fname + ["   "] + ["   "] + results[7].Iname
+            let Usrank8 = results[8].fname + ["   "] + ["   "] + results[8].Iname
+            let Usrank9 = results[9].fname + ["   "] + ["   "] + results[9].Iname
+            let Srank = results[0].score
+            let Srank1 = results[1].score
+            let Srank2 = results[2].score
+            let Srank3 = results[3].score
+            let Srank4 = results[4].score
+            let Srank5 = results[5].score
+            let Srank6 = results[6].score
+            let Srank7 = results[7].score
+            let Srank8 = results[8].score
+            let Srank9 = results[9].score
+            res.json({ status: 'ok', message: 'success', usrank: Usrank, usrank1: Usrank1, usrank2: Usrank2, usrank3: Usrank3, usrank4: Usrank4, usrank5: Usrank5, usrank6: Usrank6, usrank7: Usrank7, usrank8: Usrank8, usrank9: Usrank9, srank: Srank, srank1: Srank1, srank2: Srank2, srank3: Srank3, srank4: Srank4, srank5: Srank5, srank6: Srank6, srank7: Srank7, srank8: Srank8, srank9: Srank9, })
+
         });
-      });
+    });
 })
+
 
 app.listen(3333, function () {
     console.log('CORS-enabled web server listening on port 3333')
