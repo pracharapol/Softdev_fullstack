@@ -161,7 +161,7 @@ export default function SignUpSide() {
                 </ul>
             </div>
 
-            <div className="body">
+            <div className="body bb">
                 <div className="body-CreateAccount">
                     <h2 className="cr">Create Account</h2>
                     <div className="login">

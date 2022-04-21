@@ -218,12 +218,18 @@ export default function Pass() {
                     <div className="loginz">
 
                         <form noValidate onSubmit={handleSubmit} name="inpz">
-
-                            <input className="txz4" type="password" placeholder="Password" id="password" name="password" required />
-                            <br />
-                            <input className="txz1" type="password" placeholder="New Password" id="newPassword" name="newPassword" required />
-                            <br />
-                            <input className="txz2" type="password" placeholder="new Password again" id="password2" name="password2" required />
+                        <div className="email2">
+                                <label >Password</label>
+                            </div>
+                            <input className="txz4" type="password"  id="password" name="password" required />
+                            <div className="email2">
+                                <label >New Password</label>
+                            </div>
+                            <input className="txz1" type="password"  id="newPassword" name="newPassword" required />
+                            <div className="email2">
+                                <label >New Password again</label>
+                            </div>
+                            <input className="txz2" type="password"  id="password2" name="password2" required />
                             <br />
 
 
