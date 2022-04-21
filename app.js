@@ -25,11 +25,11 @@ const checkEmailError = (req, res, results) => {
         results.forEach(element => {
             if (((element.email.toLowerCase() == req.body.email.toLowerCase()))) {
                 res.json({ status: 'emailDuplecate' })
-                return;
+                return
             }
             else if ((element.fname.toLowerCase() == req.body.fname.toLowerCase()) && (element.Iname.toLowerCase() == req.body.Iname.toLowerCase())) {
                 res.json({ status: 'nameDuplecate' })
-                return;
+                return
             }
         }
 
@@ -40,7 +40,7 @@ const checkEmailError = (req, res, results) => {
 
 app.post('/register', jsonParser, function (req, res, next) {
     connection.execute(
-        'SELECT * FROM users WHERE email=? or fname=?', [req.body.email, req.body.fname],
+        'SELECT * FROM users WHERE email=? or fname=? and Iname=?', [req.body.email, req.body.fname,req.body.Iname],
         function (err, results) {
             if (err) {
                 res.json({ status: 'error', message: err })
@@ -51,11 +51,7 @@ app.post('/register', jsonParser, function (req, res, next) {
                     checkEmailError(req, res, results)
                 }
 
-                else {
-                    if (0 == 1) {
-
-                    }
-                    else {
+                else{
                         bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
                             connection.execute(
                                 'INSERT INTO users (email, password, fname, Iname) VALUES (?, ?, ?, ?)',
@@ -70,11 +66,11 @@ app.post('/register', jsonParser, function (req, res, next) {
                                 }
                             );
                         });
-                    }
+                    
                 }
             }
         }
-    )
+    );
 
 })
 
@@ -103,7 +99,7 @@ app.post('/login', jsonParser, function (req, res, next) {
                 }
             });
         }
-    );
+    )
 })
 
 
