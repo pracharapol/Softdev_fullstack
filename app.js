@@ -24,12 +24,15 @@ const checkEmailError = (req, res, results) => {
     if (results.length > 0) {
         results.forEach(element => {
             if (((element.email.toLowerCase() == req.body.email.toLowerCase()))) {
-                res.json({ status: 'emailDuplecate' })
-                return
+                return res
+                .json({ status: 'emailDuplecate' })
+                
+                
             }
-            else if ((element.fname.toLowerCase() == req.body.fname.toLowerCase()) && (element.Iname.toLowerCase() == req.body.Iname.toLowerCase())) {
-                res.json({ status: 'nameDuplecate' })
-                return
+            if ((element.fname.toLowerCase() == req.body.fname.toLowerCase()) && (element.Iname.toLowerCase() == req.body.Iname.toLowerCase())) {
+                return  res
+               .json({ status: 'nameDuplecate' })
+                
             }
         }
 
@@ -40,18 +43,19 @@ const checkEmailError = (req, res, results) => {
 
 app.post('/register', jsonParser, function (req, res, next) {
     connection.execute(
-        'SELECT * FROM users WHERE email=? or fname=? and Iname=?', [req.body.email, req.body.fname,req.body.Iname],
+        'SELECT * FROM users WHERE email=? or fname=? and Iname=?', [req.body.email, req.body.fname, req.body.Iname],
         function (err, results) {
             if (err) {
-                res.json({ status: 'error', message: err })
-                return
+                return res
+                .json({ status: 'error', message: err })
+                
             }
             else {
                 if (results.length > 0) {
+                    
                     checkEmailError(req, res, results)
-                }
-
-                else{
+                }  
+                 else {
                         bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
                             connection.execute(
                                 'INSERT INTO users (email, password, fname, Iname) VALUES (?, ?, ?, ?)',
@@ -59,18 +63,20 @@ app.post('/register', jsonParser, function (req, res, next) {
                                 [req.body.email, hash, req.body.fname, req.body.Iname],
                                 function (err, results, fields) {
                                     if (err) {
-                                        res.json({ status: 'error', message: err })
-                                        return
+                                        return res
+                                       .json({ status: 'error', message: err })
+                                        
                                     }
-                                    res.json({ status: 'ok' })
+                                    return res
+                                    .json({ status: 'ok' })
                                 }
                             );
                         });
-                    
-                }
+                    }
+                
             }
         }
-    );
+    )
 
 })
 
