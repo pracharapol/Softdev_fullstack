@@ -126,12 +126,12 @@ export default function SignUpSide() {
                         window.location = '/Login'
                     }
 
-                    if (data.status == 'emailDuplecate') {
-                        alert('register failed because email duplecate')
+                    if (data.status == 'email or name Duplecate') {
+                        alert('register failed because email or name duplecate')
                     } 
                    
-                    if (data.status == 'nameDuplecate') {
-                        alert('register failed because Firsrname and Lastname duplecate')
+                    if (data.status == 'email and name Duplecate') {
+                        alert('register failed because email and name duplecate')
                     }
 
 
