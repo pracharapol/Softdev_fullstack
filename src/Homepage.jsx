@@ -110,7 +110,7 @@ export default function Hom() {
                         <li><Link to="/Home">🌎 </Link></li>
                     </div>
                     <div className="box-bgh1">
-                    「 Name : {Fullname} 」 <br/><a className="pa"href="/password">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change Password</a>
+                    「 Name : {Fullname} 」 <br/><a className="pa"href="/profile">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Profile</a>
                     </div>
                     <ul>
                         <div className="box-bgh5">
@@ -158,8 +158,14 @@ export default function Hom() {
                     <li>Rewards here</li>
                     
                     </button>
-                    
+                   
                 </div>
+                <br/>
+                <br/>
+                <br/>
+                <div className="box-bgh6">
+                            <li><a href="https://www.facebook.com/Breath-of-the-world-110681278288353/?modal=admin_todo_tour&notif_id=1650629140922870&notif_t=page_invite&ref=notif">Contact </a></li>
+                        </div>
                
             </div>
         </div>

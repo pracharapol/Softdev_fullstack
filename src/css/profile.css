@@ -13,13 +13,13 @@
 * li {
     list-style: none;
 }
-.containerz{
+.containerzz{
     position: relative;
     min-height: 100vh;
     min-width: 200vh;
     
 }
-.header-webz {
+.header-webzz {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,7 +28,7 @@
     
     color: #fff;
 }
-.menuoz{
+.menuozz{
     position: relative;
     width: 100%;
     height: 10vh;
@@ -46,37 +46,36 @@
     border: 2px solid rgb(0, 0, 0);
     
 }
-.logorz {
+.logorzz {
     font-size: 4rem;
     color: #fff;
-    animation: logorz infinite 15s linear;
+    animation: logorzz infinite 15s linear;
 }
 
-.menuoz ul{
+.menuozz ul{
     display: flex;
     transition: 0.4s;
     grid-gap: 10px;
-    width: 22%;
-   
+    width: 20%;
    
 }
-.menuoz ul li{
+.menuozz ul li{
     padding: 0 50px;
     transition: 0.4s;
 }
-.menuoz ul li a{
+.menuozz ul li a{
     font-weight: bold;
     color: #fff;
     font-size: 20px;
     
 }
-.bgrz {
+.bgrzz {
     
     width: 100%;
     height: 100%;
     position: relative;
 }
-.bgrz::after{
+.bgrzz::after{
     content: "";
     position: absolute;
     top: 0;
@@ -91,7 +90,7 @@
     background-attachment: fixed;
 }
 
-.body-CreateAccountz {
+.body-CreateAccountzz {
     margin: auto auto;
     top: 50px;
     width: 60%;
@@ -109,11 +108,11 @@
     cursor: default;
     
 }
-.crz:hover{
+.crzz:hover{
     transform: translateY(-5px);
    
  }
-.bodyz h2,.crz {
+.bodyzz h2,.crzz {
     margin-top: -20px;
     border: 2px solid rgb(0, 0, 0);
     background-image: url("giphy.gif");
@@ -126,7 +125,7 @@
     font-weight: bold;
     font-size: 35px;
 }
-.bodyz .txz1{
+.bodyzz .txzz1{
     margin: 5px;
     border-radius: 5px;
     font-size: 20px;
@@ -134,7 +133,7 @@
     text-align: center;
     
 }
-.bodyz .txz2{
+.bodyzz .txzz2{
     margin: 5px;
     border-radius: 5px;
     font-size: 20px;
@@ -142,7 +141,7 @@
     text-align: center;
     
 }
-.bodyz .txz3{
+.bodyzz .txzz3{
     margin: 5px;
     border-radius: 5px;
     font-size: 20px;
@@ -150,7 +149,7 @@
     text-align: center;
     
 }
-.bodyz .txz4{
+.bodyzz .txzz4{
     margin: 5px;
     border-radius: 5px;
     font-size: 20px;
@@ -158,24 +157,9 @@
     text-align: center;
     
 }
-.button-savez{
-    margin: 5px 5px;
-    border-radius: 5px;
-    font-size: 20px;
-    padding: 0 5px;
-    border: 2px solid rgb(0, 0, 0);
-    text-align: center;
-    transition: 0.4s;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, 0.8);
-    color: rgb(0, 0, 0);
-}
-.button-savez:hover{
-    background-color: rgba(55, 188, 126, 0.8);
-}
-.loginz{
+
+
+.loginzz{
     top: 20px;
     margin: 20px 20px;
     border: 1px solid rgb(255, 255, 255);
@@ -190,43 +174,57 @@
     
 }
 
-.inputz{
+.inputzz{
     padding: 10px;
     
 }
-.menuoz .boxs-bgz1:hover{
+.menuozz .boxs-bgzz1:hover{
     transform: translateY(-5px);
     transition: 0.4s;
     position: relative;
     
 }
-.menuoz .boxs-bgz2:hover{
+.menuozz .boxs-bgzz2:hover{
     transform: translateY(-5px);
     transition: 0.4s;
     position: relative;
     
 
 }
-.menuoz .boxs-bgz3:hover{
+.menuozz .boxs-bgzz3:hover{
     transform: translateY(-5px);
     transition: 0.4s;
     position: relative;
     
 }
-.menuoz .boxs-bgz4:hover{
+.menuozz .boxs-bgzz4:hover{
     transform: translateY(-5px);
     transition: 0.4s;
     position: relative;
     
 }
-.boxs-bgz1{
+.boxs-bgzz1{
     background-image: url("boxbg.png");
     border-radius: 25px;
     background-position: center;
     background-size: cover;
     border: 1px solid rgb(255, 255, 255);
 }
-.boxs-bgz2{
+.boxs-bgzz2{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+}
+.boxs-bgzz3{
+    background-image: url("boxbg.png");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+}
+.boxs-bgzz4{
     background-image: url("boxbg.png");
     border-radius: 25px;
     background-position: center;
@@ -234,23 +232,7 @@
     border: 1px solid rgb(255, 255, 255);
     
 }
-.boxs-bgz3{
-    background-image: url("boxbg.png");
-    border-radius: 25px;
-    background-position: center;
-    background-size: cover;
-    border: 1px solid rgb(255, 255, 255);
-    
-}
-.boxs-bgz4{
-    background-image: url("boxbg.png");
-    border-radius: 25px;
-    background-position: center;
-    background-size: cover;
-    border: 1px solid rgb(255, 255, 255);
-    
-}
-@keyframes logorz {
+@keyframes logorzz {
     from {
       transform: rotate(0deg);
     }
@@ -258,7 +240,7 @@
       transform: rotate(360deg);
     }
   }
-  @keyframes crz{
+  @keyframes crzz{
     from {
       transform: translateY(-20px);
     }
@@ -266,13 +248,8 @@
       transform: translateY(0px);
     }
   } 
-  .button-savez:hover{
-    transform: translateY(-3px);
-    transition: 0.4s;
-    position: relative;
-  }
-
-  .box-bgz1{
+ 
+  .box-bgzz1{
     
     text-shadow:0.05em 0.05em rgb(255, 255, 255) ;
     color: rgb(0, 0, 0);
@@ -285,14 +262,39 @@
     cursor: default;
     
 }
-.bodyz .email2{
+.bodyzz .email2{
     padding-left: 29%;
     text-align: left;
     color: rgb(255, 255, 255);
     text-shadow:0.05em 0.05em rgb(0, 0, 0) ;
     font-weight: bold;
 }
-.bodyz{
+.bodyzz{
     font-weight: bold;
     
+}
+.emaill{
+    font-size: 20px;
+    color: #fff;
+    text-shadow:0.05em 0.05em rgb(255, 0, 0);
+}
+.namee{
+    font-size: 20px;
+    color: #fff;
+    text-shadow:0.05em 0.05em rgb(255, 0, 0);
+}
+.scoree{
+    font-size: 20px;
+    color: #fff;
+    text-shadow:0.05em 0.05em rgb(255, 0, 0);
+}
+.coinn{
+    font-size: 20px;
+    color: #fff;
+    text-shadow:0.05em 0.05em rgb(255, 0, 0);
+}
+.scoref{
+    font-size: 20px;
+    color: #fff;
+    text-shadow:0.05em 0.05em rgb(255, 0, 0);
 }

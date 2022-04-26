@@ -15,6 +15,8 @@ import Red from './Red';
 import Pass from './password';
 import Qr from './Greenqr';
 import Random from './random';
+import Profile from './profile';
+
 ReactDOM.render(
   <BrowserRouter>
   <Routes>
@@ -30,6 +32,7 @@ ReactDOM.render(
       <Route path="/password" element={<Pass />} />
       <Route path="/Qr" element={<Qr />} />
       <Route path="/random" element={<Random />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
 </BrowserRouter>,
   document.getElementById('root')

@@ -204,6 +204,9 @@ export default function Pass() {
                 「 Name : {Fullname} 」
                     </div>
                 <ul>
+                <div className="boxs-bgz3">
+                        <li><Link to="/profile">Back </Link></li>
+                    </div>
                     <div className="boxs-bgz4">
                         <li><Link to="/Home">Home </Link></li>
                     </div>

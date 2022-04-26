@@ -35,7 +35,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 110%;
     background-image: url("giphy3.gif");
     z-index: -2;
     background-size: cover;
@@ -385,22 +385,25 @@ td {
 .bog1:hover {
     transform: translateY(-15px);
     transition: 0.5s;
+    border: 3px solid rgb(0, 0, 0);
 }
 
 .bog2:hover {
     transform: translateY(-15px);
     transition: 0.5s;
+    border: 3px solid rgb(0, 0, 0);
 }
 
 .bog3:hover {
     transform: translateY(-15px);
     transition: 0.5s;
+    border: 3px solid rgb(0, 0, 0);
 }
 
 .bog4:hover {
     transform: translateY(-15px);
     transition: 0.5s;
-
+    border: 3px solid rgb(0, 0, 0);
 }
 
 .pa {
@@ -412,4 +415,31 @@ td {
 
 .pa:hover {
     color: blue;
+}
+.box-bgh10{
+    width: 280px;
+    font-size: 25px;
+    margin-left:  150%; ;
+}
+.box-bgh6 {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgb(255, 255, 255);
+    text-align: center;
+    width: 15%;
+    font-size: 30px;
+    margin: 0 42%;
+    cursor: pointer;
+    text-shadow: 0.1em 0.1em rgb(0, 0, 0);
+}
+.box-bgh6 li a{
+    color: #fff;
+}
+.box-bgh6:hover{
+    background-color: rgba(55, 188, 126, 0.8);
+    transition: 0.4s;
+    transform: translateY(-10px);
+  
 }

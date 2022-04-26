@@ -38,6 +38,17 @@ const Greenqr = () => {
                 token: token
             })
         })
+        fetch('http://localhost:3333/updatescoref', {
+            method: 'PUT', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify({
+                type: value,
+                token: token
+            })
+        })
         fetch('http://localhost:3333/updatecoin', {
             method: 'PUT', // or 'PUT'
             headers: {

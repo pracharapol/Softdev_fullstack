@@ -160,7 +160,7 @@
     font-weight: bold;
     
     left: 7%;
-    cursor: default;
+    cursor: pointer;
     
 }
 .box-bghm2{
@@ -355,17 +355,20 @@
   .bogm1:hover{
       transform:translateY(-15px);
       transition: 0.5s;
+      border: 3px solid rgb(176, 255, 145);
   }
   .bogm2:hover{
     transform:translateY(-15px);
     transition: 0.5s;
+    border: 3px solid rgb(176, 255, 145);
 } .bogm3:hover{
     transform:translateY(-15px);
     transition: 0.5s;
+    border: 3px solid rgb(176, 255, 145);
 } .bogm4:hover{
     transform:translateY(-15px);
     transition: 0.5s;
-    
+    border: 3px solid rgb(176, 255, 145);
 }
 
 
