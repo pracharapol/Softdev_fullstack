@@ -12,8 +12,10 @@ const secret = 'fullstack-login2022'
 app.use(cors())
 
 const mysql = require('mysql2');
-const req = require('express/lib/request')
+const req = require('express/lib/request');
+const { timeout } = require('nodemon/lib/config')
 const connection = mysql.createConnection({
+    // password: 'Kongilllk5555',
     host: 'localhost',
     user: 'root',
     database: 'mydb'
@@ -48,7 +50,6 @@ app.post('/register', jsonParser, function (req, res, next) {
                     bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
                         connection.execute(
                             'INSERT INTO users (email, password, fname, Iname) VALUES (?, ?, ?, ?)',
-
                             [req.body.email, hash, req.body.fname, req.body.Iname],
                             function (err, results, fields) {
                                 if (err) {
@@ -112,7 +113,7 @@ app.get('/getname/:token', function (req, res) {
         const decode = jwt.verify(req.params.token, secret);
         const { email } = decode
         connection.execute(
-            'SELECT fname,Iname FROM users WHERE email=?',
+            'SELECT fname,Iname,email FROM users WHERE email=?',
             [email],
             function (err, results) {
                 if (err) {
@@ -124,7 +125,8 @@ app.get('/getname/:token', function (req, res) {
                     return
                 }
                 let Usname = results[0].fname + ["   "] + results[0].Iname
-                res.json({ status: 'ok', message: 'success', usname: Usname })
+                let Usemail = results[0].email
+                res.json({ status: 'ok', message: 'success', usname: Usname , usemail: Usemail})
                 return
             }
 
@@ -179,6 +181,31 @@ app.get('/getcoin/:token', function (req, res) {
                 }
                 let Uscoinn = results[0].coin
                 res.json({ status: 'ok', message: ' get usname sussess', Uscoinn: Uscoinn })
+            }
+        )
+    } catch (err) {
+        res.json({ status: 'error', message: err.message })
+    }
+})
+
+app.get('/getscoref/:token', function (req, res) {
+    try {
+        const decode = jwt.verify(req.params.token, secret);
+        const { email } = decode
+        connection.execute(
+            'SELECT scoref FROM users WHERE email=?',
+            [email],
+            function (err, results,) {
+                if (err) {
+                    res.json({ status: 'error', message: err })
+                    return
+                }
+                if (results.length == 0) {
+                    res.json({ status: 'error', message: 'no user found' })
+                    return
+                }
+                let Uscoref = results[0].scoref
+                res.json({ status: 'ok', message: ' get usname sussess', Uscoref: Uscoref })
             }
         )
     } catch (err) {
@@ -288,6 +315,49 @@ app.put('/updatescore', jsonParser, async function (req, res) {
                             if (results1) {
 
                                 return res.json({ status: 'ok', message: ' get usname sussess', Uscore: Uscore })
+                            }
+                        })
+                }
+            })
+    } catch (err) {
+        return res.json({ status: 'error', message: err.message })
+    }
+})
+
+
+app.put('/updatescoref', jsonParser, async function (req, res) {
+    try {
+        console.log(req.body)
+        const decode = jwt.verify(req.body.token, secret);
+        const { email } = decode
+        const type = req.body.type
+        const count = await check(type)
+        connection.query(
+            'SELECT scoref, id FROM users WHERE email=?',
+            [email],
+            function (err, results, fields) {
+                if (err) {
+                    res.json({ status: 'error', message: err })
+                    return
+                }
+                console.log(results)
+                if (results.length == 0) {
+                    res.json({ status: 'error', message: 'no user found' })
+                    return
+                }
+                else {
+                    let Uscoref = results[0].scoref + count
+                    connection.query(
+                        "UPDATE users SET scoref = ? WHERE id = ?",
+                        [Uscoref, results[0].id],
+                        function (errors1, results1, fields1) {
+                            if (errors1 || results1.length == 0) {
+                                res.json({ status: 'error', message: err })
+                                return
+                            }
+                            if (results1) {
+
+                                return res.json({ status: 'ok', message: ' get usname sussess', Uscoref: Uscoref })
                             }
                         })
                 }
@@ -500,6 +570,25 @@ app.get('/ranking', function (req, res) {
         });
     });
 })
+
+
+
+app.put('/resetscore', jsonParser, async function (req, res) {
+    connection.connect(function (err) {
+       
+            if (err) throw err;
+            
+            connection.query('UPDATE users SET score = 0 WHERE score > 0', function (err, result) {
+              if (err) throw err;
+                
+                    res.json({ status: 'ok', message: 'Delete success'})
+              
+            });
+        
+      
+          });
+})
+
 
 
 app.listen(3333, function () {
