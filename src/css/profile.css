@@ -114,16 +114,18 @@
  }
 .bodyzz h2,.crzz {
     margin-top: -20px;
-    border: 2px solid rgb(0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
     background-image: url("giphy.gif");
+    background-size: cover;
     border-radius: 25px;
     top: -100px;
     color: rgb(255, 255, 255);
     text-shadow:0.05em 0.05em rgb(0, 0, 0) ;
-    animation: cr infinite 1.5s linear;
+   
     animation-direction: alternate;
     font-weight: bold;
     font-size: 35px;
+    animation: crzz 1.3s linear 1.5s infinite alternate;
 }
 .bodyzz .txzz1{
     margin: 5px;
@@ -247,6 +249,12 @@
     to {
       transform: translateY(0px);
     }
+
+    0%   {color:rgb(0, 0, 0)}
+    50%  {color:rgb(119, 59, 59)}
+    100%  {color:rgb(255, 255, 255)}
+    /* 75%  {color:rgb(138, 50, 50)}
+    100% {color:rgb(0, 0, 0)} */
   } 
  
   .box-bgzz1{
@@ -298,3 +306,17 @@
     color: #fff;
     text-shadow:0.05em 0.05em rgb(255, 0, 0);
 }
+.box-bghhh1 {
+
+    text-shadow: 0.02em 0.02em rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    letter-spacing: 0.5px;
+    position: absolute;
+    font-weight: bold;
+    
+    left: 7%;
+    cursor: default;
+    
+}
+

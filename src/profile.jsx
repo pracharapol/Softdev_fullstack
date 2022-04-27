@@ -139,6 +139,33 @@ export default function Pro() {
 
 
     }, [])
+
+    function clockMonth(){
+        var i = today.getMonth()
+        if(i>=0 && i<9){
+            return '0' + (today.getMonth()+1)
+        }
+        else {
+            return (today.getMonth()+1)
+        }
+    }
+
+    function clockDate(){
+        var i = today.getDate()
+        if(i>=0 && i<9){
+            return '0' + (today.getDate())
+        }
+        else {
+            return (today.getDate())
+        }
+    }
+
+    var today = new Date(),
+    date = clockDate()+ '-'  + (clockMonth()) + '-' + today.getFullYear(); 
+    
+     
+
+
 return(
     <div className="containerzz bgrzz">
 
@@ -147,7 +174,9 @@ return(
                     <li><Link to="/Home">🌎 </Link></li>
 
                 </div>
-                
+                 <div className="box-bghhh1">
+                 Last time login :&nbsp;{date}
+                    </div>
                 <ul>
                     <div className="boxs-bgzz4">
                         <li><Link to="/Home">Home </Link></li>
@@ -159,7 +188,7 @@ return(
 
             <div className="bodyzz">
                 <div className="body-CreateAccountzz">
-                    <h2 className="crz">Profile</h2>
+                    <h2 className="crzz">Profile</h2>
                     <div className="loginzz">
                         <div className="emaill">
                     Email : {Email}

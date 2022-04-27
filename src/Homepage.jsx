@@ -97,6 +97,7 @@ export default function Hom() {
         window.location = '/Login '
 
     }
+
     return (
 
         <div>
@@ -110,7 +111,7 @@ export default function Hom() {
                         <li><Link to="/Home">🌎 </Link></li>
                     </div>
                     <div className="box-bgh1">
-                    「 Name : {Fullname} 」 <br/><a className="pa"href="/profile">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Profile</a>
+                    「 Name : {Fullname} 」 <br/><a className="pa"href="/profile">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Profile</a>
                     </div>
                     <ul>
                         <div className="box-bgh5">

@@ -154,15 +154,16 @@
     
     text-shadow:0.05em 0.05em rgb(255, 255, 255) ;
     color: rgb(0, 0, 0);
-    font-size: 25px;
+    font-size: 20px;
     letter-spacing: 0.5px;
     position:absolute;
     font-weight: bold;
     
     left: 7%;
-    cursor: pointer;
+    cursor: default;
     
 }
+
 .box-bghm2{
     background-image: url("boxbg.png");
     border-radius: 25px;

@@ -93,7 +93,7 @@
 /*contain*/
 .containh .headerh {
     transition: 0.5s;
-    animation: headerh infinite 1s linear;
+    animation: headerh infinite 1.5s linear;
     animation-direction: alternate;
 }
 
@@ -172,13 +172,13 @@
 
 .box-bgh1 {
 
-    text-shadow: 0.05em 0.05em rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    font-size: 25px;
+   
+    font-size: 20px;
     letter-spacing: 0.5px;
     position: absolute;
     font-weight: bold;
-    
+    text-shadow: 0.05em 0.05em rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     left: 7%;
     cursor: default;
 
@@ -366,7 +366,7 @@ td {
 
 
     transition: 0.5s;
-    animation: cardd infinite 1s linear;
+    animation: cardd infinite 1.5s linear;
     animation-direction: alternate;
 
 }
@@ -407,7 +407,7 @@ td {
 }
 
 .pa {
-    font-size: 15px;
+    font-size: 17px;
     color: rgb(255, 0, 0);
     text-shadow: 0.05em 0.05em rgb(0, 0, 0);
     
@@ -423,7 +423,7 @@ td {
 }
 .box-bgh6 {
     background-color: rgba(0,0,0,0.5);
-    border-radius: 25px;
+    border-radius: 10px;
     background-position: center;
     background-size: cover;
     border: 1px solid rgb(255, 255, 255);

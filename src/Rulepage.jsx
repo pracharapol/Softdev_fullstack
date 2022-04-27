@@ -72,6 +72,7 @@ const Rule = () => {
                         <h2>● คิวอาร์โค้ดของร้านค้าสีเหลือง = 2 คะแนน หมายถึงว่ามีวัสดุที่ทำจากธรรมชาติในปริมาณที่ปานกลาง </h2>
                         <h2>● คิวอาร์โค้ดของร้านค้าสีแดง = 1 คะแนน หมายถึงว่ามีวัสดุที่ทำจากธรรมชาติในปริมาณที่น้อย</h2><h2>● จากนั้นคะแนนก็จะถูกอัพโหลดเข้าไปในช่องสะสมคะแนนของแต่ละรายบุคคล
                             จากนั้นจะนำคะแนนที่ได้ไปจัดอันดับตามลำดับของผู้เล่นทั้งหมด</h2>
+                            <h2>● โดยจะทำการรีเซ็ตตารางจัดอันดับทุกๆ 7 วัน</h2>
                     </div>
                 </div>
                 <br/>
@@ -84,6 +85,7 @@ const Rule = () => {
                         <h2>● Yellow Shop QR Code = 2 means that there is a moderate amount of natural materials. </h2>
                         <h2>● Red shop QR code = 1 point, meaning there is a small amount of natural materials.</h2>
                         <h2>● The points will then be uploaded into the individual score box. Then the score will be ranked according to the order of all players.</h2>
+                        <h2>● The leaderboard will be reset every 7 days.</h2>
                     </div>
                 </div>
             </div>
