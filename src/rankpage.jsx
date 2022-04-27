@@ -172,7 +172,7 @@ export default function Rank() {
                     </div>
 
                     <div className="box-bg3">
-                        <li><Link to="/Rule">Rules </Link></li>
+                        <li><Link to="/RuleR">Rules of Ranking</Link></li>
                     </div>
                     <button className="box-bg4" onClick={handleLogout}>
                         <li>Logout</li>
@@ -193,58 +193,58 @@ export default function Rank() {
                                 <th>Score</th>
                             </tr>
                             <tr>
-                                <td>1.</td>
-                                <td>{Fullrank}</td>
-                                <td>{Fullscore}</td>
+                                <td className="one">1.</td>
+                                <td className="one">{Fullrank}</td>
+                                <td className="one">{Fullscore}</td>
                             </tr>
                             <tr>
-                                <td>2.</td>
-                                <td>{Fullrank1}</td>
-                                <td>{Fullscore1}</td>
+                                <td className="two">2.</td>
+                                <td className="two">{Fullrank1}</td>
+                                <td className="two">{Fullscore1}</td>
                             </tr>
                             <tr>
-                                <td>3.</td>
-                                <td>{Fullrank2}</td>
-                                <td>{Fullscore2}</td>
+                                <td className="three">3.</td>
+                                <td className="three">{Fullrank2}</td>
+                                <td className="three">{Fullscore2}</td>
                             </tr>
                             <tr>
-                                <td>4.</td>
-                                <td>{Fullrank3}</td>
-                                <td>{Fullscore3}</td>
+                                <td className="other">4.</td>
+                                <td className="other">{Fullrank3}</td>
+                                <td className="other">{Fullscore3}</td>
                             </tr>
                             <tr>
-                                <td>5.</td>
-                                <td>{Fullrank4}</td>
-                                <td>{Fullscore4}</td>
+                                <td className="other">5.</td>
+                                <td className="other">{Fullrank4}</td>
+                                <td className="other">{Fullscore4}</td>
                             </tr>
                             <tr>
-                                <td>6.</td>
-                                <td>{Fullrank5}</td>
-                                <td>{Fullscore5}</td>
-                            </tr>
-
-                            <tr>
-                                <td>7.</td>
-                                <td>{Fullrank6}</td>
-                                <td>{Fullscore6}</td>
+                                <td className="other">6.</td>
+                                <td className="other">{Fullrank5}</td>
+                                <td className="other">{Fullscore5}</td>
                             </tr>
 
                             <tr>
-                                <td>8.</td>
-                                <td>{Fullrank7}</td>
-                                <td>{Fullscore7}</td>
+                                <td className="other">7.</td>
+                                <td className="other">{Fullrank6}</td>
+                                <td className="other">{Fullscore6}</td>
                             </tr>
 
                             <tr>
-                                <td>9.</td>
-                                <td>{Fullrank8}</td>
-                                <td>{Fullscore8}</td>
+                                <td className="other">8.</td>
+                                <td className="other">{Fullrank7}</td>
+                                <td className="other">{Fullscore7}</td>
                             </tr>
 
                             <tr>
-                                <td>10.</td>
-                                <td>{Fullrank9}</td>
-                                <td>{Fullscore9}</td>
+                                <td className="other">9.</td>
+                                <td className="other">{Fullrank8}</td>
+                                <td className="other">{Fullscore8}</td>
+                            </tr>
+
+                            <tr>
+                                <td className="other">10.</td>
+                                <td className="other">{Fullrank9}</td>
+                                <td className="other">{Fullscore9}</td>
                             </tr>
                         </table>
                     </body>

@@ -16,6 +16,7 @@ import Pass from './password';
 import Qr from './Greenqr';
 import Random from './random';
 import Profile from './profile';
+import Ruler from './Ruler';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -33,6 +34,7 @@ ReactDOM.render(
       <Route path="/Qr" element={<Qr />} />
       <Route path="/random" element={<Random />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/Ruler" element={<Ruler />} />
     </Routes>
 </BrowserRouter>,
   document.getElementById('root')
