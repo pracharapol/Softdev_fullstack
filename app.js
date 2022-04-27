@@ -126,7 +126,7 @@ app.get('/getname/:token', function (req, res) {
                 }
                 let Usname = results[0].fname + ["   "] + results[0].Iname
                 let Usemail = results[0].email
-                res.json({ status: 'ok', message: 'success', usname: Usname , usemail: Usemail})
+                res.json({ status: 'ok', message: 'success', usname: Usname, usemail: Usemail })
                 return
             }
 
@@ -463,6 +463,7 @@ app.put('/deletecoin', jsonParser, async function (req, res) {
                         function (errors1, results1, fields1) {
                             if (errors1 || results1.length == 0) {
                                 res.json({ status: 'error', message: err })
+
                                 return
                             }
                             if (results1) {
@@ -575,18 +576,53 @@ app.get('/ranking', function (req, res) {
 
 app.put('/resetscore', jsonParser, async function (req, res) {
     connection.connect(function (err) {
-       
+
+        if (err) throw err;
+        connection.query('SELECT coin, id FROM users ORDER BY score DESC', function (err, results) {
             if (err) throw err;
+            let top1 = results[0].coin + 200
+            let top2 = results[1].coin + 100
+            let top3 = results[2].coin + 50
+            connection.query(
+                "UPDATE users SET coin = ? WHERE id = ?",
+                [top1, results[0].id],
+                function (errors1, results1, fields1) {
+                    if (errors1 || results1.length == 0) {
+                        res.json({ status: 'error', message: err })
+                        return
+                    }
+                    connection.query(
+                        "UPDATE users SET coin = ? WHERE id = ?",
+                        [top2, results[1].id],
+                        function (errors1, results1, fields1) {
+                            if (errors1 || results1.length == 0) {
+                                res.json({ status: 'error', message: err })
+                                return
+                            }
+                            connection.query(
+                                "UPDATE users SET coin = ? WHERE id = ?",
+                                [top3, results[2].id],
+                                function (errors1, results1, fields1) {
+                                    if (errors1 || results1.length == 0) {
+                                        res.json({ status: 'error', message: err })
+                                        return
+                                    }
+                                    connection.query('UPDATE users SET score = 0 WHERE score >= 0', function (err, result) {
+                                        if (err) throw err;
+                                        res.json({ status: 'ok', message: 'Delete success', top1:top1, top2:top2, top3:top3})
+                        
+                                    });
+                                })
+
+                        })
+
+                })
             
-            connection.query('UPDATE users SET score = 0 WHERE score > 0', function (err, result) {
-              if (err) throw err;
-                
-                    res.json({ status: 'ok', message: 'Delete success'})
-              
-            });
-        
-      
-          });
+           
+            
+
+        });
+    });
 })
 
 
