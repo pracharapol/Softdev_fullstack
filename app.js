@@ -20,6 +20,12 @@ const connection = mysql.createConnection({
     user: 'root',
     database: 'mydb'
 });
+const connection2 = mysql.createConnection({
+
+    host: 'localhost',
+    user: 'root',
+    database: 'count'
+})
 
 
 const checkEmailError = (req, res, results) => {
@@ -61,6 +67,18 @@ app.post('/register', jsonParser, function (req, res, next) {
                                     .json({ status: 'ok' })
                             }
                         );
+                        connection.execute(
+                            'INSERT INTO his (email) VALUES (?)',
+                            [req.body.email],
+                            function (err, results, fields) {
+                                if (err) {
+                                    return res
+                                        .json({ status: 'error', message: err })
+
+                                }
+
+                            }
+                        );
                     });
                 }
             }
@@ -84,7 +102,7 @@ app.post('/login', jsonParser, function (req, res, next) {
             }
             bcrypt.compare(req.body.password, users[0].password, function (err, isLogin) {
                 if (isLogin) {
-                    var token = jwt.sign({ email: users[0].email }, secret, { expiresIn: '1h' });
+                    var token = jwt.sign({ email: users[0].email }, secret, { expiresIn: '12h' });
                     res.json({ status: 'ok', message: 'login success', token })
 
                 }
@@ -303,18 +321,40 @@ app.put('/updatescore', jsonParser, async function (req, res) {
                     return
                 }
                 else {
-                    let Uscore = results[0].score + count
                     connection.query(
-                        "UPDATE users SET score = ? WHERE id = ?",
-                        [Uscore, results[0].id],
-                        function (errors1, results1, fields1) {
-                            if (errors1 || results1.length == 0) {
-                                res.json({ status: 'error', message: err })
-                                return
-                            }
-                            if (results1) {
+                        'SELECT history ,id FROM his WHERE email=?',
+                        [email],
+                        function (err, results2, fields2) {
+                            if (results2[0].history < 6) {
+                                let Uscore = results[0].score + count
+                                connection.query(
+                                    "UPDATE users SET score = ? WHERE id = ?",
+                                    [Uscore, results[0].id],
+                                    function (errors1, results1, fields1) {
+                                        if (errors1 || results1.length == 0) {
+                                            res.json({ status: 'error', message: err })
+                                            return
+                                        }
+                                        if (results1) {
 
-                                return res.json({ status: 'ok', message: ' get usname sussess', Uscore: Uscore })
+                                            return res.json({ status: 'ok', message: ' get usname sussess', Uscore: Uscore })
+                                        }
+                                    })
+                                let Ushis = results2[0].history + 1
+                                connection.query(
+                                    "UPDATE his SET history = ? WHERE id = ?",
+                                    [Ushis, results2[0].id],
+                                    function (errors2, results3, fields3) {
+                                        if (errors2 || results3.length == 0) {
+                                            res.json({ status: 'error', message: err })
+                                            return
+                                        }
+
+                                    })
+                            }
+                            else {
+                                return res.json({ status: 'no' })
+
                             }
                         })
                 }
@@ -346,21 +386,44 @@ app.put('/updatescoref', jsonParser, async function (req, res) {
                     return
                 }
                 else {
-                    let Uscoref = results[0].scoref + count
                     connection.query(
-                        "UPDATE users SET scoref = ? WHERE id = ?",
-                        [Uscoref, results[0].id],
-                        function (errors1, results1, fields1) {
-                            if (errors1 || results1.length == 0) {
-                                res.json({ status: 'error', message: err })
-                                return
-                            }
-                            if (results1) {
+                        'SELECT history ,id FROM his WHERE email=?',
+                        [email],
+                        function (err, results2, fields2) {
+                            if (results2[0].history < 6) {
+                                let Uscoref = results[0].scoref + count
+                                connection.query(
+                                    "UPDATE users SET scoref = ? WHERE id = ?",
+                                    [Uscoref, results[0].id],
+                                    function (errors1, results1, fields1) {
+                                        if (errors1 || results1.length == 0) {
+                                            res.json({ status: 'error', message: err })
+                                            return
+                                        }
+                                        if (results1) {
 
-                                return res.json({ status: 'ok', message: ' get usname sussess', Uscoref: Uscoref })
+                                            return res.json({ status: 'ok', message: ' get usname sussess', Uscoref: Uscoref })
+                                        }
+                                    })
+                                let Ushis = results2[0].history + 1
+                                connection.query(
+                                    "UPDATE his SET history = ? WHERE id = ?",
+                                    [Ushis, results2[0].id],
+                                    function (errors2, results3, fields3) {
+                                        if (errors2 || results3.length == 0) {
+                                            res.json({ status: 'error', message: err })
+                                            return
+                                        }
+
+                                    })
+                            }
+                            else {
+                                return res.json({ status: 'no' })
+
                             }
                         })
                 }
+
             })
     } catch (err) {
         return res.json({ status: 'error', message: err.message })
@@ -389,18 +452,40 @@ app.put('/updatecoin', jsonParser, async function (req, res) {
                     return
                 }
                 else {
-                    let Uscoin = results[0].coin + count
                     connection.query(
-                        "UPDATE users SET coin = ? WHERE id = ?",
-                        [Uscoin, results[0].id],
-                        function (errors1, results1, fields1) {
-                            if (errors1 || results1.length == 0) {
-                                res.json({ status: 'error', message: err })
-                                return
-                            }
-                            if (results1) {
+                        'SELECT history ,id FROM his WHERE email=?',
+                        [email],
+                        function (err, results2, fields2) {
+                            if (results2[0].history < 6) {
+                                let Uscoin = results[0].coin + count
+                                connection.query(
+                                    "UPDATE users SET coin = ? WHERE id = ?",
+                                    [Uscoin, results[0].id],
+                                    function (errors1, results1, fields1) {
+                                        if (errors1 || results1.length == 0) {
+                                            res.json({ status: 'error', message: err })
+                                            return
+                                        }
+                                        if (results1) {
 
-                                return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin: Uscoin })
+                                            return res.json({ status: 'ok1', message: ' get usname sussess', Uscoin: Uscoin })
+                                        }
+                                    })
+                                let Ushis = results2[0].history + 1
+                                connection.query(
+                                    "UPDATE his SET history = ? WHERE id = ?",
+                                    [Ushis, results2[0].id],
+                                    function (errors2, results3, fields3) {
+                                        if (errors2 || results3.length == 0) {
+                                            res.json({ status: 'error', message: err })
+                                            return
+                                        }
+
+                                    })
+                            }
+                            else {
+                                return res.json({ status: 'no' })
+
                             }
                         })
                 }
@@ -609,17 +694,17 @@ app.put('/resetscore', jsonParser, async function (req, res) {
                                     }
                                     connection.query('UPDATE users SET score = 0 WHERE score >= 0', function (err, result) {
                                         if (err) throw err;
-                                        res.json({ status: 'ok', message: 'Delete success', top1:top1, top2:top2, top3:top3})
-                        
+                                        res.json({ status: 'ok', message: 'Delete success', top1: top1, top2: top2, top3: top3 })
+
                                     });
                                 })
 
                         })
 
                 })
-            
-           
-            
+
+
+
 
         });
     });
