@@ -247,8 +247,20 @@ export default function Rank() {
                                 <td className="other">{Fullscore9}</td>
                             </tr>
                         </table>
+                        
                     </body>
                 </div>
+                {/* <div className="grid-cardY">
+                        <body>
+                        <table>
+                            <tr>
+                            
+                                <td className="other">{Fullname}</td>
+                                <td className="other">{Scoreuser}</td>
+                            </tr>
+                            </table>
+                            </body>
+                            </div> */}
             </div>
 
         </div>

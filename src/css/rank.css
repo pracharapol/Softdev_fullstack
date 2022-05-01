@@ -123,6 +123,20 @@
     animation-direction: alternate;
     
 }
+.grid-cardY{
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 25px;
+    font-size: 30px;
+    background-position: center;
+    border:10px black;
+    position: relative;
+    color: #fff;
+    text-shadow:0.1em 0.1em rgb(3, 25, 28) ;
+    animation: grid-card infinite 1.5s linear;
+    animation-direction: alternate;
+    
+}
 .grid-card table{
     width: 1000px;
     height: 600px;
@@ -138,7 +152,28 @@
 	vertical-align:bottom;
     border-collapse: collapse;
 }
+.grid-cardY table{
+    width: 1000px;
+    height: 55px;
+    background-position: center;
+    background-size: cover;
+    margin: auto;
+    text-align: center;
+    margin-top: 50px;
+    position: relative;
+    transition: 0.4s;
+    cursor: default;
+    
+	vertical-align:bottom;
+    border-collapse: collapse;
+}
 .grid-card table th{
+    background-image: url("giphy.gif");
+    border: 5px solid black;
+    border-radius: 10px;
+    text-align: center;
+}
+.grid-cardY table th{
     background-image: url("giphy.gif");
     border: 5px solid black;
     border-radius: 10px;

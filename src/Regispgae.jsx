@@ -77,7 +77,7 @@ export default function SignUpSide() {
             strength -= 4;
         }
         if (strength < 3) {
-            alert('Use 8 more characters with a mix of letters, capital letters, numbers & symbols')
+            alert('Password use 8 more characters with a mix of letters, capital letters, numbers & symbols')
             return false;
         }
 

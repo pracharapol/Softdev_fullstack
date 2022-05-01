@@ -38,6 +38,17 @@ const Greenqr = () => {
                 token: token
             })
         })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status == 'ok') {
+                window.location = '/rankp'
+            }
+            else if (data.status == 'no') {
+                alert('You have scanned 3 times today.')
+                window.location = '/Home'
+            }
+
+        })
         fetch('http://localhost:3333/updatescoref', {
             method: 'PUT', // or 'PUT'
             headers: {
@@ -60,7 +71,7 @@ const Greenqr = () => {
                 token: token
             })
         })
-            .then(() => navigate("/rankp"))
+        
     }
 
     
