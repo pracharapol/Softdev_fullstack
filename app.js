@@ -20,12 +20,7 @@ const connection = mysql.createConnection({
     user: 'root',
     database: 'mydb'
 });
-const connection2 = mysql.createConnection({
 
-    host: 'localhost',
-    user: 'root',
-    database: 'count'
-})
 
 
 const checkEmailError = (req, res, results) => {
@@ -42,7 +37,7 @@ const checkEmailError = (req, res, results) => {
 
 app.post('/register', jsonParser, function (req, res, next) {
     connection.execute(
-        'SELECT * FROM users WHERE email=? or fname=? and Iname=?', [req.body.email, req.body.fname, req.body.Iname],
+        'SELECT * FROM his WHERE email=? or fname=? and Iname=?', [req.body.email, req.body.fname, req.body.Iname],
         function (err, results) {
             if (err) {
                 return res
@@ -53,9 +48,25 @@ app.post('/register', jsonParser, function (req, res, next) {
                     return res.json({ status: 'email or name Duplecate' });
                 }
                 else {
+
+                    connection.execute(
+                        'INSERT INTO users (email, fname, Iname) VALUES (?, ?, ?)',
+                        [req.body.email, req.body.fname, req.body.Iname],
+                        function (err, results, fields) {
+                            if (err) {
+                                return res
+                                    .json({ status: 'error', message: err })
+
+                            }
+                            return res
+                                .json({ status: 'ok' })
+                        }
+                    );
+
+
                     bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
                         connection.execute(
-                            'INSERT INTO users (email, password, fname, Iname) VALUES (?, ?, ?, ?)',
+                            'INSERT INTO his (email, password, fname, Iname) VALUES (?, ?, ?, ?)',
                             [req.body.email, hash, req.body.fname, req.body.Iname],
                             function (err, results, fields) {
                                 if (err) {
@@ -63,22 +74,10 @@ app.post('/register', jsonParser, function (req, res, next) {
                                         .json({ status: 'error', message: err })
 
                                 }
-                                return res
-                                    .json({ status: 'ok' })
-                            }
-                        );
-                        connection.execute(
-                            'INSERT INTO his (email) VALUES (?)',
-                            [req.body.email],
-                            function (err, results, fields) {
-                                if (err) {
-                                    return res
-                                        .json({ status: 'error', message: err })
-
-                                }
 
                             }
                         );
+
                     });
                 }
             }
@@ -89,7 +88,7 @@ app.post('/register', jsonParser, function (req, res, next) {
 
 app.post('/login', jsonParser, function (req, res, next) {
     connection.execute(
-        'SELECT * FROM users WHERE email=?',
+        'SELECT * FROM his WHERE email=?',
         [req.body.email],
         function (err, users, fields) {
             if (err) {
@@ -126,14 +125,16 @@ app.post('/authen', jsonParser, function (req, res, next) {
 })
 
 
+
 app.get('/getname/:token', function (req, res) {
     try {
         const decode = jwt.verify(req.params.token, secret);
         const { email } = decode
         connection.execute(
-            'SELECT fname,Iname,email FROM users WHERE email=?',
+            'SELECT fname,Iname,email FROM his WHERE email=?',
             [email],
             function (err, results) {
+
                 if (err) {
                     res.json({ status: 'error', message: err })
                     return
@@ -236,7 +237,7 @@ app.put('/newPassword', jsonParser, function (req, res) {
     const decode = jwt.verify(req.body.token, secret);
     const { email } = decode
     connection.query(
-        'SELECT password FROM users WHERE email=?', [email],
+        'SELECT password FROM his WHERE email=?', [email],
         function (err, users, fields) {
             bcrypt.compare(req.body.password, users[0].password, function (err, isLogin) {
 
@@ -245,7 +246,7 @@ app.put('/newPassword', jsonParser, function (req, res) {
                     bcrypt.hash(req.body.newPassword, saltRounds, function (err, hash) {
 
                         connection.execute(
-                            'UPDATE users SET password =? WHERE email=? ', [hash, email],
+                            'UPDATE his SET password =? WHERE email=? ', [hash, email],
 
                             function (err, results) {
 
@@ -268,6 +269,7 @@ app.put('/newPassword', jsonParser, function (req, res) {
                                 }
                             }
                         );
+
                     });
                 }
                 else {
@@ -281,6 +283,8 @@ app.put('/newPassword', jsonParser, function (req, res) {
             );
         });
 })
+
+
 
 
 const check = async (type) => {
@@ -298,6 +302,69 @@ const check = async (type) => {
     }
     return 0
 }
+
+app.post('/history', jsonParser, async function (req, res) {
+    try {
+        console.log(req.body)
+        const decode = jwt.verify(req.body.token, secret);
+        const { email } = decode
+        const type = req.body.type
+        const count = await check(type)
+        //
+        connection.query(
+            'SELECT history ,id FROM users WHERE email=?',
+            [email],
+            function (err, results2, fields2) {
+                if (results2[0].history < 3) {
+                    if (type == 'Green') {
+                        connection.query(
+                            'INSERT INTO history (fname, Iname,types) SELECT fname, Iname,green FROM users,color WHERE email=? and green=?',
+                            [email, 'GREEN'],
+                            function (err, results, fields) {
+                                if (err) {
+                                    return res
+                                        .json({ status: 'error', message: err })
+                                }
+
+                            }
+                        );
+
+
+                    }
+                    else if (type == 'Yellow') {
+                        connection.query(
+                            'INSERT INTO history (fname, Iname,types) SELECT fname, Iname,green FROM users,color WHERE email=? and yellow=?',
+                            [email, 'YELLOW'],
+                            function (err, results, fields) {
+                                if (err) {
+                                    return res
+                                        .json({ status: 'error', message: err })
+                                }
+
+                            }
+                        );
+                    }
+                    else if (type == 'Red') {
+                        connection.query(
+                            'INSERT INTO history (fname, Iname,types) SELECT fname, Iname,green FROM users,color WHERE email=? and red=?',
+                            [email, 'RED'],
+                            function (err, results, fields) {
+                                if (err) {
+                                    return res
+                                        .json({ status: 'error', message: err })
+                                }
+
+                            }
+                        );
+                    }
+                }
+            })
+
+        //
+    } catch (err) {
+        return res.json({ status: 'error', message: err.message })
+    }
+})
 
 
 app.put('/updatescore', jsonParser, async function (req, res) {
@@ -322,10 +389,10 @@ app.put('/updatescore', jsonParser, async function (req, res) {
                 }
                 else {
                     connection.query(
-                        'SELECT history ,id FROM his WHERE email=?',
+                        'SELECT history ,id FROM users WHERE email=?',
                         [email],
                         function (err, results2, fields2) {
-                            if (results2[0].history < 6) {
+                            if (results2[0].history < 3) {
                                 let Uscore = results[0].score + count
                                 connection.query(
                                     "UPDATE users SET score = ? WHERE id = ?",
@@ -342,7 +409,7 @@ app.put('/updatescore', jsonParser, async function (req, res) {
                                     })
                                 let Ushis = results2[0].history + 1
                                 connection.query(
-                                    "UPDATE his SET history = ? WHERE id = ?",
+                                    "UPDATE users SET history = ? WHERE id = ?",
                                     [Ushis, results2[0].id],
                                     function (errors2, results3, fields3) {
                                         if (errors2 || results3.length == 0) {
@@ -387,10 +454,10 @@ app.put('/updatescoref', jsonParser, async function (req, res) {
                 }
                 else {
                     connection.query(
-                        'SELECT history ,id FROM his WHERE email=?',
+                        'SELECT history ,id FROM users WHERE email=?',
                         [email],
                         function (err, results2, fields2) {
-                            if (results2[0].history < 6) {
+                            if (results2[0].history < 3) {
                                 let Uscoref = results[0].scoref + count
                                 connection.query(
                                     "UPDATE users SET scoref = ? WHERE id = ?",
@@ -407,7 +474,7 @@ app.put('/updatescoref', jsonParser, async function (req, res) {
                                     })
                                 let Ushis = results2[0].history + 1
                                 connection.query(
-                                    "UPDATE his SET history = ? WHERE id = ?",
+                                    "UPDATE users SET history = ? WHERE id = ?",
                                     [Ushis, results2[0].id],
                                     function (errors2, results3, fields3) {
                                         if (errors2 || results3.length == 0) {
@@ -453,10 +520,10 @@ app.put('/updatecoin', jsonParser, async function (req, res) {
                 }
                 else {
                     connection.query(
-                        'SELECT history ,id FROM his WHERE email=?',
+                        'SELECT history ,id FROM users WHERE email=?',
                         [email],
                         function (err, results2, fields2) {
-                            if (results2[0].history < 6) {
+                            if (results2[0].history < 3) {
                                 let Uscoin = results[0].coin + count
                                 connection.query(
                                     "UPDATE users SET coin = ? WHERE id = ?",
@@ -473,7 +540,7 @@ app.put('/updatecoin', jsonParser, async function (req, res) {
                                     })
                                 let Ushis = results2[0].history + 1
                                 connection.query(
-                                    "UPDATE his SET history = ? WHERE id = ?",
+                                    "UPDATE users SET history = ? WHERE id = ?",
                                     [Ushis, results2[0].id],
                                     function (errors2, results3, fields3) {
                                         if (errors2 || results3.length == 0) {
@@ -623,6 +690,9 @@ app.put('/deletecoin', jsonParser, async function (req, res) {
 })
 
 
+
+
+
 app.get('/ranking', function (req, res) {
 
     connection.connect(function (err) {
@@ -704,11 +774,12 @@ app.put('/resetscore', jsonParser, async function (req, res) {
                 })
 
 
-
-
         });
     });
 })
+
+
+
 
 
 
