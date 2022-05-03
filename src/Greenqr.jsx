@@ -71,6 +71,17 @@ const Greenqr = () => {
                 token: token
             })
         })
+        fetch('http://localhost:3333/history', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify({
+                type: value,
+                token: token
+            })
+        })
         
     }
 
