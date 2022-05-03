@@ -318,42 +318,37 @@ app.post('/history', jsonParser, async function (req, res) {
                 if (results2[0].history < 3) {
                     if (type == 'Green') {
                         connection.query(
-                            'INSERT INTO history (fname, Iname,types) SELECT fname, Iname,green FROM users,color WHERE email=? and green=?',
-                            [email, 'GREEN'],
+                            'INSERT INTO history (fname, Iname,types, location) SELECT fname, Iname,green,lolo FROM users,color WHERE email=? and green=? and lolo=?',
+                            [email, 'GREEN' , 'Patom ซ.สุขุมวิท 49 เขตวัฒนา กรุงเทพฯ'],
                             function (err, results, fields) {
                                 if (err) {
                                     return res
                                         .json({ status: 'error', message: err })
                                 }
-
                             }
                         );
-
-
                     }
                     else if (type == 'Yellow') {
                         connection.query(
-                            'INSERT INTO history (fname, Iname,types) SELECT fname, Iname,green FROM users,color WHERE email=? and yellow=?',
-                            [email, 'YELLOW'],
+                            'INSERT INTO history (fname, Iname,types, location) SELECT fname, Iname,yellow,lolo FROM users,color WHERE email=? and yellow=? and lolo=?',
+                            [email, 'YELLOW', 'Story Garden ซอย ประดิษฐ์มนูธรรม เขตลาดพร้าว กทม.'],
                             function (err, results, fields) {
                                 if (err) {
                                     return res
                                         .json({ status: 'error', message: err })
                                 }
-
                             }
                         );
                     }
                     else if (type == 'Red') {
                         connection.query(
-                            'INSERT INTO history (fname, Iname,types) SELECT fname, Iname,green FROM users,color WHERE email=? and red=?',
-                            [email, 'RED'],
+                            'INSERT INTO history (fname, Iname,types, location) SELECT fname, Iname,red,lolo FROM users,color WHERE email=? and red=? and lolo=?',
+                            [email, 'RED', 'Filsandfile ซอยลาดพร้าว 84 หรือจะเข้าทาง ประดิษฐ์มนูญธรรม 3'],
                             function (err, results, fields) {
                                 if (err) {
                                     return res
                                         .json({ status: 'error', message: err })
                                 }
-
                             }
                         );
                     }
